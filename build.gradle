@@ -1,0 +1,43 @@
+// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+
+plugins {
+  id 'java'
+  id 'org.jetbrains.intellij' version '0.4.16'
+}
+
+group 'org.intellij.sdk'
+version '2.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  implementation 'com.optimizely.ab:core-api:3.4.1'
+  implementation 'com.optimizely.ab:core-httpclient-impl:3.4.1'
+  implementation 'org.apache.httpcomponents:httpclient:4.5.6'
+
+  // The SDK integrates with multiple JSON parsers. Here, we use Jackson.
+  implementation 'com.fasterxml.jackson.core:jackson-core:2.7.1'
+  implementation 'com.fasterxml.jackson.core:jackson-annotations:2.7.1'
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.7.1'
+
+  implementation 'org.slf4j:slf4j-api:1.7.16'
+  implementation 'ch.qos.logback:logback-classic:1.1.7'
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+  version '2019.2.4'
+  updateSinceUntilBuild = false
+}
+patchPluginXml {
+  version = project.version
+}
+
+// Force javadoc rebuild before jar is built
+jar.dependsOn javadoc

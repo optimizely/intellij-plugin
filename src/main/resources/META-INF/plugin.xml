@@ -1,0 +1,113 @@
+<!-- Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+
+<idea-plugin>
+  <!--  Unique id for this plugin. Must stay constant for the life of the plugin.  -->
+  <id>com.optimizely.intellij.sdk.action</id>
+
+  <!-- Text to display as name on Preferences/Settings | Plugin page -->
+  <name>SDK: Action Sample Project</name>
+
+  <!-- The version of this plugin -->
+  <version>2.0.0</version>
+
+  <!-- Compatible with the following versions of IntelliJ Platform:
+        version 2018.3 (build #183) and newer. -->
+  <idea-version since-build="191"/>
+
+  <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <!-- Text to display as description on Preferences/Settings | Plugin page  -->
+  <description>
+    <![CDATA[
+      Demonstrates implementing Action and Action Group patterns.<br> Adds entries to the Tools menu.
+    ]]>
+  </description>
+  <change-notes>
+    <![CDATA[
+      <ul>
+        <li><b>2.0.0</b> Renamed from register_actions and converted to Gradle project.</li>
+        <li><b>1.1</b> Refactor to give users feedback when selecting menu items.</li>
+        <li><b>1.0</b> Release 2018.3 and earlier.</li>
+      </ul>
+    ]]>
+  </change-notes>
+
+  <!-- Text to display as company information on Preferences/Settings | Plugin page -->
+  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+  <actions>
+    <!-- See https://www.jetbrains.org/intellij/sdk/docs/basics/action_system.html#registering-actions-in-pluginxml
+          for information about the elements and attributes used for actions and groups. -->
+    <!-- This <action> element adds a static menu item in first position of the Tools menu that shows PopupDialogAction. -->
+<!--    <action id="com.optimizely.intellij.plugin.action.PopupDialogAction" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+            text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+      <keyboard-shortcut first-keystroke="control alt O" second-keystroke="E" keymap="$default"/>
+      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+    </action>
+-->
+    <!-- All of the following menu groups add the action PopupDialogAction to menus in different ways.
+          Note that even though these groups reuse the same action class, in each use the action ids are unique. -->
+    <!-- GroupedActions demonstrates declaring an action group using the default ActionGroup implementation provided by the
+          IntelliJ Platform framework. (Note the lack of a group "class" attribute.) GroupedActions gets inserted after PopupDialogAction
+          in the Tools menu. Because the group's implementation is default, it cannot impose enable/disable conditions. Instead it
+          must rely on the conditions imposed by the parent menu where it is inserted. It declares one action in the group. -->
+ <!--
+    <group id="org.intellij.sdk.action.GroupedActions" text="Optimizely" popup="true" icon="ActionBasicsIcons.Sdk_default_icon">
+      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.optimizely.intellij.plugin.action.PopupDialogAction"/>
+      <action class="com.optimizely.intellij.plugin.action.PopupDialogAction" id="org.intellij.sdk.action.ExperimentAction"
+              text="List Experiments" description="list of experiments in current project" icon="ActionBasicsIcons.Sdk_default_icon">
+      </action>
+      <action class="com.optimizely.intellij.plugin.action.PopupDialogAction" id="org.intellij.sdk.action.FeatureAction"
+              text="List Features" description="list of features in current project" icon="ActionBasicsIcons.Sdk_default_icon">
+      </action>
+    </group>
+-->
+    <!-- CustomDefaultActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this plugin.
+          This group is to be inserted atop the Editor Popup Menu. It declares one action in the group. -->
+    <group id="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" class="com.optimizely.intellij.plugin.action.CustomDefaultActionGroup" popup="true"
+           text="Optimizely" description="Optimizely helper plugin" icon="ActionBasicsIcons.Sdk_default_icon">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <action id="com.optimizely.intellij.plugin.action.SetAction" class="com.optimizely.intellij.plugin.action.SetAction"
+              text="Set SDK Key to use" description="sdk key of project that contains experiments, features, and events that you use" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="S" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+      <action id="com.optimizely.intellij.plugin.action.ListExperiments" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+              text="List Experiments" description="list experiments of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="E" keymap="$default"/>
+        <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+      </action>
+      <action id="com.optimizely.intellij.plugin.action.ListFeatures" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+              text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="F" keymap="$default"/>
+        <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
+      </action>
+      <action id="com.optimizely.intellij.plugin.action.ListEvents" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+              text="List Events" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="V" keymap="$default"/>
+        <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
+      </action>
+      <action id="com.optimizely.intellij.plugin.action.ListAttributes" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+              text="List Attributes" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="A" keymap="$default"/>
+        <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
+      </action>
+    </group>
+    <!-- DynamicActionGroup demonstrates declaring an action group without a static action declaration.
+          An action is added to the group programmatically in the DynamicActionGroup implementation. -->
+<!--
+    <group id="com.optimizely.intellij.plugin.action.DynamicActionGroup" class="com.optimizely.intellij.plugin.action.DynamicActionGroup" popup="true"
+           text="Dynamically Grouped Actions" description="SDK dynamically grouped action example" icon="ActionBasicsIcons.Sdk_default_icon">
+      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.GroupedActions"/>
+    </group>
+-->
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.optimizely.intellij.plugin.service.OptimizelyFactoryService"
+                        serviceImplementation="com.optimizely.intellij.plugin.service.OptimizelyFactoryServiceImpl"/>
+  </extensions>
+
+</idea-plugin>

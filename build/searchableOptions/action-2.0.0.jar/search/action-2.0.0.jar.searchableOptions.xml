@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<options>
+  <configurable id="preferences.keymap" configurable_name="Keymap">
+    <option name="a" path="ActionManager" hit="A Group Action" />
+    <option name="action" path="ActionManager" hit="A Group Action" />
+    <option name="group" path="ActionManager" hit="A Group Action" />
+    <option name="a" path="ActionManager" hit="A Popup Action" />
+    <option name="action" path="ActionManager" hit="A Popup Action" />
+    <option name="popup" path="ActionManager" hit="A Popup Action" />
+    <option name="custom" path="ActionManager" hit="Custom defaultActionGroup demo" />
+    <option name="defaultactiongroup" path="ActionManager" hit="Custom defaultActionGroup demo" />
+    <option name="demo" path="ActionManager" hit="Custom defaultActionGroup demo" />
+    <option name="actions" path="ActionManager" hit="Dynamically Grouped Actions" />
+    <option name="dynamically" path="ActionManager" hit="Dynamically Grouped Actions" />
+    <option name="grouped" path="ActionManager" hit="Dynamically Grouped Actions" />
+    <option name="action" path="ActionManager" hit="Pop Dialog Action" />
+    <option name="dialog" path="ActionManager" hit="Pop Dialog Action" />
+    <option name="pop" path="ActionManager" hit="Pop Dialog Action" />
+    <option name="actions" path="ActionManager" hit="Popup Grouped Actions" />
+    <option name="grouped" path="ActionManager" hit="Popup Grouped Actions" />
+    <option name="popup" path="ActionManager" hit="Popup Grouped Actions" />
+    <option name="action" path="ActionManager" hit="SDK action example" />
+    <option name="example" path="ActionManager" hit="SDK action example" />
+    <option name="sdk" path="ActionManager" hit="SDK action example" />
+    <option name="action" path="ActionManager" hit="SDK dynamically grouped action example" />
+    <option name="dynamically" path="ActionManager" hit="SDK dynamically grouped action example" />
+    <option name="example" path="ActionManager" hit="SDK dynamically grouped action example" />
+    <option name="grouped" path="ActionManager" hit="SDK dynamically grouped action example" />
+    <option name="sdk" path="ActionManager" hit="SDK dynamically grouped action example" />
+    <option name="action" path="ActionManager" hit="SDK popup grouped action example" />
+    <option name="example" path="ActionManager" hit="SDK popup grouped action example" />
+    <option name="grouped" path="ActionManager" hit="SDK popup grouped action example" />
+    <option name="popup" path="ActionManager" hit="SDK popup grouped action example" />
+    <option name="sdk" path="ActionManager" hit="SDK popup grouped action example" />
+    <option name="action" path="ActionManager" hit="SDK static grouped action example" />
+    <option name="example" path="ActionManager" hit="SDK static grouped action example" />
+    <option name="grouped" path="ActionManager" hit="SDK static grouped action example" />
+    <option name="sdk" path="ActionManager" hit="SDK static grouped action example" />
+    <option name="static" path="ActionManager" hit="SDK static grouped action example" />
+  </configurable>
+</options>
+
