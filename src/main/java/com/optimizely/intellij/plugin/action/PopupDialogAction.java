@@ -26,8 +26,11 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * Action class to demonstrate how to interact with the IntelliJ Platform.
@@ -97,14 +100,28 @@ public class PopupDialogAction extends AnAction {
       list = new ArrayList<String>(optimizely.getOptimizelyConfig().getFeaturesMap().keySet());
       title = "Features";
     }
-    else if (id.contains("Event")){
+    else if (id.contains("Event")) {
       list = new ArrayList<String>(optimizely.getProjectConfig().getEventNameMapping().keySet());
       title = "Events";
     }
+    else if (id.contains("Variation")) {
+      if (factory.getSelectedExperiment() != null) {
+        list = factory.getSelectedExperiment().getVariations().stream().map(variation -> variation.getKey()).collect(Collectors.toList());
+      }
+      else if (factory.getSelectedFeature() != null) {
+        list = new ArrayList(factory.getSelectedFeature().getVariableKeyToFeatureVariableMap().keySet());
+      }
+      else {
+        list = Collections.EMPTY_LIST;
+      }
+      title = "Variations";
+    }
     else {
-      list = new ArrayList<String>(optimizely.getProjectConfig().getAttributeKeyMapping().keySet());
+      list = new ArrayList(optimizely.getProjectConfig().getAttributeKeyMapping().keySet());
       title = "Attributes";
     }
+
+    final String selectionType = title;
 
     ListPopupStep<String> step = new BaseListPopupStep<String>(title, list) {
       @Override
@@ -144,6 +161,12 @@ public class PopupDialogAction extends AnAction {
 
         WriteCommandAction.runWriteCommandAction(currentProject, r);
 
+        if (selectionType == "Experiments") {
+          ServiceManager.getService(OptimizelyFactoryService.class).setSelectedExperimentKey(selectedValue);
+        }
+        else if (selectionType == "Features") {
+          ServiceManager.getService(OptimizelyFactoryService.class).setSelectedFeatureKey(selectedValue);
+        }
         return null;
       }
     };

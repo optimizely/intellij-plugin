@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -157,6 +157,22 @@ implements <a href="../../../../../com/optimizely/intellij/plugin/service/Optimi
 <td class="colFirst"><code>com.optimizely.ab.Optimizely</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryServiceImpl.html#getCurrentOptimizely--">getCurrentOptimizely</a></span>()</code>&nbsp;</td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>com.optimizely.ab.config.Experiment</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryServiceImpl.html#getSelectedExperiment--">getSelectedExperiment</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>com.optimizely.ab.config.FeatureFlag</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryServiceImpl.html#getSelectedFeature--">getSelectedFeature</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryServiceImpl.html#setSelectedExperimentKey-java.lang.String-">setSelectedExperimentKey</a></span>(java.lang.String&nbsp;key)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryServiceImpl.html#setSelectedFeatureKey-java.lang.String-">setSelectedFeatureKey</a></span>(java.lang.String&nbsp;key)</code>&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -212,13 +228,65 @@ implements <a href="../../../../../com/optimizely/intellij/plugin/service/Optimi
 <a name="getCurrentOptimizely--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getCurrentOptimizely</h4>
 <pre>public&nbsp;com.optimizely.ab.Optimizely&nbsp;getCurrentOptimizely()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html#getCurrentOptimizely--">getCurrentOptimizely</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html" title="interface in com.optimizely.intellij.plugin.service">OptimizelyFactoryService</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSelectedExperimentKey-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSelectedExperimentKey</h4>
+<pre>public&nbsp;void&nbsp;setSelectedExperimentKey(java.lang.String&nbsp;key)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html#setSelectedExperimentKey-java.lang.String-">setSelectedExperimentKey</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html" title="interface in com.optimizely.intellij.plugin.service">OptimizelyFactoryService</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSelectedFeatureKey-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSelectedFeatureKey</h4>
+<pre>public&nbsp;void&nbsp;setSelectedFeatureKey(java.lang.String&nbsp;key)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html#setSelectedFeatureKey-java.lang.String-">setSelectedFeatureKey</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html" title="interface in com.optimizely.intellij.plugin.service">OptimizelyFactoryService</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSelectedExperiment--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSelectedExperiment</h4>
+<pre>public&nbsp;com.optimizely.ab.config.Experiment&nbsp;getSelectedExperiment()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html#getSelectedExperiment--">getSelectedExperiment</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html" title="interface in com.optimizely.intellij.plugin.service">OptimizelyFactoryService</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSelectedFeature--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getSelectedFeature</h4>
+<pre>public&nbsp;com.optimizely.ab.config.FeatureFlag&nbsp;getSelectedFeature()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html#getSelectedFeature--">getSelectedFeature</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/optimizely/intellij/plugin/service/OptimizelyFactoryService.html" title="interface in com.optimizely.intellij.plugin.service">OptimizelyFactoryService</a></code></dd>
 </dl>
 </li>
 </ul>

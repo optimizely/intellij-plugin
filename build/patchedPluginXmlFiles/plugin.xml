@@ -35,11 +35,15 @@
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
       <action id="com.optimizely.intellij.plugin.action.ListEvents" class="com.optimizely.intellij.plugin.action.PopupDialogAction" text="List Events" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
-        <keyboard-shortcut first-keystroke="alt O" second-keystroke="V" keymap="$default"/>
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="T" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
       <action id="com.optimizely.intellij.plugin.action.ListAttributes" class="com.optimizely.intellij.plugin.action.PopupDialogAction" text="List Attributes" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="A" keymap="$default"/>
+        <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
+      </action>
+      <action id="com.optimizely.intellij.plugin.action.ListVariations" class="com.optimizely.intellij.plugin.action.PopupDialogAction" text="List Variations" description="list variations for the current experiment or feature flag" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="V" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
     </group>
