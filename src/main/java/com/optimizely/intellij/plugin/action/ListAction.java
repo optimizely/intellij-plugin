@@ -38,15 +38,15 @@ import java.util.stream.Collectors;
  * Typically this class is instantiated by the IntelliJ Platform framework based on declarations
  * in the plugin.xml file. But when added at runtime this class is instantiated by an action group.
  */
-public class PopupDialogAction extends AnAction {
+public class ListAction extends AnAction {
 
   /**
    * This default constructor is used by the IntelliJ Platform framework to
-   * instantiate this class based on plugin.xml declarations. Only needed in PopupDialogAction
+   * instantiate this class based on plugin.xml declarations. Only needed in ListAction
    * class because a second constructor is overridden.
    * @see AnAction#AnAction()
    */
-  public PopupDialogAction() {
+  public ListAction() {
     super();
   }
   
@@ -58,7 +58,7 @@ public class PopupDialogAction extends AnAction {
    * @param description  The description of the menu item.
    * @param icon  The icon to be used with the menu item.
    */
-  public PopupDialogAction(@Nullable String text, @Nullable String description, @Nullable Icon icon) {
+  public ListAction(@Nullable String text, @Nullable String description, @Nullable Icon icon) {
     super(text, description, icon);
   }
   
@@ -106,15 +106,17 @@ public class PopupDialogAction extends AnAction {
     }
     else if (id.contains("Variation")) {
       if (factory.getSelectedExperiment() != null) {
+        title = factory.getSelectedExperiment().getKey() + " Variations";
         list = factory.getSelectedExperiment().getVariations().stream().map(variation -> variation.getKey()).collect(Collectors.toList());
       }
       else if (factory.getSelectedFeature() != null) {
+        title = factory.getSelectedFeature().getKey() + " Variables";
         list = new ArrayList(factory.getSelectedFeature().getVariableKeyToFeatureVariableMap().keySet());
       }
       else {
         list = Collections.EMPTY_LIST;
+        title = "Variations";
       }
-      title = "Variations";
     }
     else {
       list = new ArrayList(optimizely.getProjectConfig().getAttributeKeyMapping().keySet());

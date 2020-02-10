@@ -7,6 +7,7 @@ import com.optimizely.ab.config.FeatureFlag;
 public interface OptimizelyFactoryService {
     Optimizely getBySDKKey(String sdkKey);
     Optimizely getCurrentOptimizely();
+    String getCurrentSDKKey();
     void setSelectedExperimentKey(String key);
     void setSelectedFeatureKey(String key);
     Experiment getSelectedExperiment();

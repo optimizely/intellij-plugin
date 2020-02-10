@@ -5,7 +5,9 @@ package com.optimizely.intellij.plugin.action;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.Editor;
+import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 import icons.ActionBasicsIcons;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,10 +16,10 @@ import org.jetbrains.annotations.Nullable;
  * @author Anna Bulenkova
  * @author jhake
  */
-public class CustomDefaultActionGroup extends DefaultActionGroup {
+public class OptimizelyActionGroup extends DefaultActionGroup {
 
   /**
-   * Given CustomDefaultActionGroup is derived from ActionGroup, in this context
+   * Given OptimizelyActionGroup is derived from ActionGroup, in this context
    * update() determines whether the action group itself should be enabled or disabled.
    * Requires an editor to be active in order to enable the group functionality.
    * @see com.intellij.openapi.actionSystem.AnAction#update(AnActionEvent)
@@ -28,6 +30,13 @@ public class CustomDefaultActionGroup extends DefaultActionGroup {
     // Enable/disable depending on whether user is editing
     Editor editor = event.getData(CommonDataKeys.EDITOR);
     event.getPresentation().setEnabled(editor != null);
+    String sdkKey = ServiceManager.getService(OptimizelyFactoryService.class).getCurrentSDKKey();
+    if (sdkKey != null) {
+      event.getPresentation().setText("Optimizely " + sdkKey);
+    }
+    else {
+      event.getPresentation().setText("Optimizely");
+    }
     // Take this opportunity to set an icon for the menu entry.
     event.getPresentation().setIcon(ActionBasicsIcons.Sdk_default_icon);
   }

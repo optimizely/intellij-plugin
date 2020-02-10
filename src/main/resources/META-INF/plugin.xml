@@ -5,10 +5,10 @@
   <id>com.optimizely.intellij.sdk.action</id>
 
   <!-- Text to display as name on Preferences/Settings | Plugin page -->
-  <name>SDK: Action Sample Project</name>
+  <name>SDK: Optimizely Plugin</name>
 
   <!-- The version of this plugin -->
-  <version>2.0.0</version>
+  <version>1.0.0</version>
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
@@ -16,6 +16,7 @@
 
   <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
   <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.lang</depends>
 
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
@@ -39,34 +40,32 @@
   <actions>
     <!-- See https://www.jetbrains.org/intellij/sdk/docs/basics/action_system.html#registering-actions-in-pluginxml
           for information about the elements and attributes used for actions and groups. -->
-    <!-- This <action> element adds a static menu item in first position of the Tools menu that shows PopupDialogAction. -->
-<!--    <action id="com.optimizely.intellij.plugin.action.PopupDialogAction" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
-            text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
+    <!-- This <action> element adds a static menu item in first position of the Tools menu that shows ListAction. -->
+<!--    <action id="com.optimizely.intellij.plugin.action.ListAction="com.optimizely.intellij.plugin.action.ListAction       text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
       <keyboard-shortcut first-keystroke="control alt O" second-keystroke="E" keymap="$default"/>
       <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       <add-to-group group-id="ToolsMenu" anchor="first"/>
     </action>
 -->
-    <!-- All of the following menu groups add the action PopupDialogAction to menus in different ways.
+    <!-- All of the following menu groups add the action ListAction to menus in different ways.
           Note that even though these groups reuse the same action class, in each use the action ids are unique. -->
     <!-- GroupedActions demonstrates declaring an action group using the default ActionGroup implementation provided by the
-          IntelliJ Platform framework. (Note the lack of a group "class" attribute.) GroupedActions gets inserted after PopupDialogAction
+          IntelliJ Platform framework. (Note the lack of a group "class" attribute.) GroupedActions gets inserted after ListAction
           in the Tools menu. Because the group's implementation is default, it cannot impose enable/disable conditions. Instead it
           must rely on the conditions imposed by the parent menu where it is inserted. It declares one action in the group. -->
  <!--
     <group id="org.intellij.sdk.action.GroupedActions" text="Optimizely" popup="true" icon="ActionBasicsIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.optimizely.intellij.plugin.action.PopupDialogAction"/>
-      <action class="com.optimizely.intellij.plugin.action.PopupDialogAction" id="org.intellij.sdk.action.ExperimentAction"
+      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.optimizely.intellij.plugin.action.ListAction   <action class="com.optimizely.intellij.plugin.action.ListActionrg.intellij.sdk.action.ExperimentAction"
               text="List Experiments" description="list of experiments in current project" icon="ActionBasicsIcons.Sdk_default_icon">
       </action>
-      <action class="com.optimizely.intellij.plugin.action.PopupDialogAction" id="org.intellij.sdk.action.FeatureAction"
+      <action class="com.optimizely.intellij.plugin.action.ListActionrg.intellij.sdk.action.FeatureAction"
               text="List Features" description="list of features in current project" icon="ActionBasicsIcons.Sdk_default_icon">
       </action>
     </group>
 -->
-    <!-- CustomDefaultActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this plugin.
+    <!-- OptimizelyActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this plugin.
           This group is to be inserted atop the Editor Popup Menu. It declares one action in the group. -->
-    <group id="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" class="com.optimizely.intellij.plugin.action.CustomDefaultActionGroup" popup="true"
+    <group id="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" class="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" popup="true"
            text="Optimizely" description="Optimizely helper plugin" icon="ActionBasicsIcons.Sdk_default_icon">
       <add-to-group group-id="ToolsMenu" anchor="first"/>
       <action id="com.optimizely.intellij.plugin.action.SetAction" class="com.optimizely.intellij.plugin.action.SetAction"
@@ -74,27 +73,27 @@
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="S" keymap="$default"/>
         <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
-      <action id="com.optimizely.intellij.plugin.action.ListExperiments" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+      <action id="com.optimizely.intellij.plugin.action.ListExperiments" class="com.optimizely.intellij.plugin.action.ListAction"
               text="List Experiments" description="list experiments of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="E" keymap="$default"/>
         <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
       </action>
-      <action id="com.optimizely.intellij.plugin.action.ListFeatures" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+      <action id="com.optimizely.intellij.plugin.action.ListFeatures" class="com.optimizely.intellij.plugin.action.ListAction"
               text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="F" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
-      <action id="com.optimizely.intellij.plugin.action.ListEvents" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+      <action id="com.optimizely.intellij.plugin.action.ListEvents" class="com.optimizely.intellij.plugin.action.ListAction"
               text="List Events" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="T" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
-      <action id="com.optimizely.intellij.plugin.action.ListAttributes" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+      <action id="com.optimizely.intellij.plugin.action.ListAttributes" class="com.optimizely.intellij.plugin.action.ListAction"
               text="List Attributes" description="list events of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="A" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
-      <action id="com.optimizely.intellij.plugin.action.ListVariations" class="com.optimizely.intellij.plugin.action.PopupDialogAction"
+      <action id="com.optimizely.intellij.plugin.action.ListVariations" class="com.optimizely.intellij.plugin.action.ListAction"
               text="List Variations" description="list variations for the current experiment or feature flag" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="V" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>

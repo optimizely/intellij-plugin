@@ -25,12 +25,12 @@ public class DynamicActionGroup extends ActionGroup {
    *
    * @param  e Event received when the associated group-id menu is chosen.
    * @return AnAction[]  An instance of AnAction, in this case containing a single instance of the
-   * PopupDialogAction class.
+   * ListAction class.
    */
   @NotNull
   @Override
   public AnAction[] getChildren(AnActionEvent e) {
-    return new AnAction[]{ new PopupDialogAction("Action Added at Runtime",
+    return new AnAction[]{ new ListAction("Action Added at Runtime",
                                                  "Dynamic Action Demo",
                                                  ActionBasicsIcons.Sdk_default_icon)
     };

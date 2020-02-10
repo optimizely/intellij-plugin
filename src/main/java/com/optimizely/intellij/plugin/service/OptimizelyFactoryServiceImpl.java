@@ -15,6 +15,7 @@ public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
     private Optimizely currentOptimizely;
     private Experiment currentExperiment;
     private FeatureFlag currentFeatureFlag;
+    private String currentSDKKey;
 
     @Override
     public Optimizely getBySDKKey(String sdkKey) {
@@ -32,7 +33,14 @@ public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
 
         }
         currentOptimizely = sdkKeyMap.get(sdkKey);
+        currentSDKKey = sdkKey;
+
         return currentOptimizely;
+    }
+
+    @Override
+    public String getCurrentSDKKey() {
+        return currentSDKKey;
     }
 
     @Override
