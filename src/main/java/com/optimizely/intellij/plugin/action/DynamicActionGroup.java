@@ -3,10 +3,17 @@
 package com.optimizely.intellij.plugin.action;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.components.ServiceManager;
+import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
+import cucumber.api.java.en_scouse.An;
 import icons.ActionBasicsIcons;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Demonstrates adding an action group to a menu statically in plugin.xml, and then creating a menu item
@@ -30,10 +37,20 @@ public class DynamicActionGroup extends ActionGroup {
   @NotNull
   @Override
   public AnAction[] getChildren(AnActionEvent e) {
-    return new AnAction[]{ new ListAction("Action Added at Runtime",
-                                                 "Dynamic Action Demo",
-                                                 ActionBasicsIcons.Sdk_default_icon)
-    };
+    OptimizelyFactoryService factoryService = ServiceManager.getService(OptimizelyFactoryService.class);
+    if (factoryService == null || factoryService.getCurrentOptimizely() == null) {
+      return new AnAction[]{};
+    }
+    String id = ActionManager.getInstance().getId(this);
+    if (id.contains("OptimizelyJumptoExperiment")) {
+        List<JumpToAction> actions = factoryService.getCurrentOptimizely().getProjectConfig().getExperimentKeyMapping().keySet().stream().map(key -> new JumpToAction(key, key, null, false, key)).collect(Collectors.toList());
+        return actions.toArray(new JumpToAction[actions.size()]);
+    }
+    else {
+      List<JumpToAction> actions = factoryService.getCurrentOptimizely().getProjectConfig().getFeatureKeyMapping().keySet().stream().map(key -> new JumpToAction(key, key, null, true, key)).collect(Collectors.toList());
+      return actions.toArray(new JumpToAction[actions.size()]);
+
+    }
   }
   
 }

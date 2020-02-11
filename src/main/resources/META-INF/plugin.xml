@@ -22,7 +22,16 @@
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
     <![CDATA[
-      Demonstrates implementing Action and Action Group patterns.<br> Adds entries to the Tools menu.
+      Optimizely plugin to get lists of features and feature variables, experiments and variations,
+      event keys and attribute keys.  No need to cut and paste from the optimizely application any longer.
+      Use option-o :
+      s - to set the sdk key to use for optimizely auto-complete.
+      e - to get a list of experiment keys
+      f - to get a list of feature keys
+      t - to get a list of event keys (track)
+      a - to get a list of attribute keys
+      In java, you can use the default control space to bring up a list of experiments or features based on
+      the auto-complete optimizely method you are calling.
     ]]>
   </description>
   <change-notes>
@@ -67,6 +76,14 @@
     <group id="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" class="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" popup="true"
            text="Optimizely" description="Optimizely helper plugin" icon="ActionBasicsIcons.Sdk_default_icon">
       <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <group id="com.optimizely.intellij.plugin.action.OptimizelyJumptoGroup" class="com.intellij.openapi.actionSystem.DefaultActionGroup" popup="true"
+           text="Jump to " description="Jump to the optimizely application by feature or experiment" icon="ActionBasicsIcons.Sdk_default_icon">
+        <group id="com.optimizely.intellij.plugin.action.OptimizelyJumptoExperiment" class="com.optimizely.intellij.plugin.action.DynamicActionGroup" popup="true"
+               text="Experiments" description="Jump to the optimizely application by experiment" icon="ActionBasicsIcons.Sdk_default_icon"/>
+        <group id="com.optimizely.intellij.plugin.action.OptimizelyJumptoFeature" class="com.optimizely.intellij.plugin.action.DynamicActionGroup" popup="true"
+               text="Features" description="Jump to the optimizely application by feature" icon="ActionBasicsIcons.Sdk_default_icon"/>
+      </group>
+
       <action id="com.optimizely.intellij.plugin.action.SetAction" class="com.optimizely.intellij.plugin.action.SetAction"
               text="Set SDK Key to use" description="sdk key of project that contains experiments, features, and events that you use" icon="ActionBasicsIcons.Sdk_default_icon">
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="S" keymap="$default"/>
