@@ -5,7 +5,7 @@
   <id>com.optimizely.intellij.sdk.action</id>
 
   <!-- Text to display as name on Preferences/Settings | Plugin page -->
-  <name>SDK: Optimizely Plugin</name>
+  <name>SDK: Optimizely code complete</name>
 
   <!-- The version of this plugin -->
   <version>1.0.0</version>
@@ -17,6 +17,7 @@
   <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
+  <depends>com.intellij.modules.java</depends>
 
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
@@ -27,15 +28,13 @@
   <change-notes>
     <![CDATA[
       <ul>
-        <li><b>2.0.0</b> Renamed from register_actions and converted to Gradle project.</li>
-        <li><b>1.1</b> Refactor to give users feedback when selecting menu items.</li>
-        <li><b>1.0</b> Release 2018.3 and earlier.</li>
+        <li><b>1.0</b> Release 2018.3 and earlier with code completion.</li>
       </ul>
     ]]>
   </change-notes>
 
   <!-- Text to display as company information on Preferences/Settings | Plugin page -->
-  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+  <vendor url="https://www.optimizely.com">Optimizely SDK</vendor>
 
   <actions>
     <!-- See https://www.jetbrains.org/intellij/sdk/docs/basics/action_system.html#registering-actions-in-pluginxml
@@ -112,6 +111,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceInterface="com.optimizely.intellij.plugin.service.OptimizelyFactoryService"
                         serviceImplementation="com.optimizely.intellij.plugin.service.OptimizelyFactoryServiceImpl"/>
+    <completion.contributor language="JAVA" implementationClass="com.optimizely.intellij.plugin.contributor.OptimizelyJavaComplete"/>
   </extensions>
 
 </idea-plugin>
