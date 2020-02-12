@@ -8,8 +8,6 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.components.ServiceManager;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
-import cucumber.api.java.en_scouse.An;
-import icons.ActionBasicsIcons;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
