@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d455be5d-baf9-4b7d-a4d3-1fcfddeff70c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optimizely/intellij/plugin/action/DynamicActionGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optimizely/intellij/plugin/action/DynamicActionGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

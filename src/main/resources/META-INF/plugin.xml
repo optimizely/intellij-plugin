@@ -17,7 +17,7 @@
   <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
-  <depends>com.intellij.modules.java</depends>
+  <depends optional="true" config-file="optimizely-java.xml">com.intellij.modules.java</depends>
 
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
@@ -128,7 +128,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceInterface="com.optimizely.intellij.plugin.service.OptimizelyFactoryService"
                         serviceImplementation="com.optimizely.intellij.plugin.service.OptimizelyFactoryServiceImpl"/>
-    <completion.contributor language="JAVA" implementationClass="com.optimizely.intellij.plugin.contributor.OptimizelyJavaComplete"/>
   </extensions>
 
 </idea-plugin>
