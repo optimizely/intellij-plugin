@@ -18,7 +18,7 @@
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
   <depends optional="true" config-file="optimizely-java.xml">com.intellij.modules.java</depends>
-
+  <depends optional="true" config-file="optimizely-kotlin.xml">org.jetbrains.kotlin</depends>
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
     <![CDATA[

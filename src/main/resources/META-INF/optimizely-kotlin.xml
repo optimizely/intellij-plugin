@@ -1,0 +1,7 @@
+<!-- Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+
+<idea-plugin>
+  <extensions defaultExtensionNs="com.intellij">
+    <completion.contributor language="kotlin" order="first" id="com.optimizely.intellij.plugin.contributor.OptimizelyKotlinComplete" implementationClass="com.optimizely.intellij.plugin.contributor.OptimizelyKotlinComplete"/>
+  </extensions>
+</idea-plugin>

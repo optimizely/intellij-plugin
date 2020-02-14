@@ -37,6 +37,7 @@ public class OptimizelyJavaComplete extends CompletionContributor {
 
                         final StringBuilder infoBuilder = new StringBuilder();
                         PsiElement element = parameters.getOriginalPosition();
+                        System.out.println("Element at " + element.getText());
                         infoBuilder.append("Element at caret: ").append(element).append("\n");
                         if (element == null) return;
                         PsiMethodCallExpression methodCallExpression = PsiTreeUtil.getParentOfType(element, PsiMethodCallExpression.class);
