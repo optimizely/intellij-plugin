@@ -24,7 +24,7 @@ public class SetAction extends AnAction {
         
         OptimizelyFactoryService service = ServiceManager.getService(OptimizelyFactoryService.class);
 
-        Optimizely optimizely = service.getBySDKKey(txt);
+        service.getBySDKKey(txt);
 
 //        if (optimizely.isValid()) {
 //            Messages.showErrorDialog("Optimizely did not intialize correctly with sdk key " + txt, "Problem with SDK Key");

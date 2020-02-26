@@ -14,13 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Demonstrates adding an action group to a menu statically in plugin.xml, and then creating a menu item
- * within the group at runtime. See plugin.xml for the declaration of DynamicActionGroup,
- * and note the group declaration does not contain an action.
- * DynamicActionGroup is based on ActionGroup because menu children are determined
- * on rules other than just positional constraints.
+ * Dynamic group of Experiments and Features.  Uses JumpToAction to jump to the edit page for Optimizely
+ * entity
  *
- * @author Anna Bulenkova
+ * @author Thomas Zurkan
  * @see ActionGroup
  */
 public class DynamicActionGroup extends ActionGroup {

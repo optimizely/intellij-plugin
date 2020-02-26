@@ -35,7 +35,7 @@ intellij {
   version '2019.2.4'
   type 'IC'
   updateSinceUntilBuild = false
-  plugins = ['java', 'android']
+  plugins = ['java', 'Kotlin', 'android']
 }
 
 runIde {

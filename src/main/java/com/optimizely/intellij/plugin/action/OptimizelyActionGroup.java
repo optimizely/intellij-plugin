@@ -13,8 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Creates an action group to contain menu actions. See plugin.xml declarations.
- * @author Anna Bulenkova
- * @author jhake
+ * @author Thomas Zurkan
  */
 public class OptimizelyActionGroup extends DefaultActionGroup {
 
