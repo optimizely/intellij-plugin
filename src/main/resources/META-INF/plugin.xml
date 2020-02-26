@@ -1,4 +1,18 @@
-<!-- Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+<!--
+ * Copyright 2020, Optimizely, Inc. and contributors                        *
+ *                                                                          *
+ * Licensed under the Apache License, Version 2.0 (the "License");          *
+ * you may not use this file except in compliance with the License.         *
+ * You may obtain a copy of the License at                                  *
+ *                                                                          *
+ *    http://www.apache.org/licenses/LICENSE-2.0                            *
+ *                                                                          *
+ * Unless required by applicable law or agreed to in writing, software      *
+ * distributed under the License is distributed on an "AS IS" BASIS,        *
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *
+ * See the License for the specific language governing permissions and      *
+ * limitations under the License.
+ -->
 
 <idea-plugin>
   <!--  Unique id for this plugin. Must stay constant for the life of the plugin.  -->
@@ -22,16 +36,44 @@
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
     <![CDATA[
-      Optimizely plugin to get lists of features and feature variables, experiments and variations,
-      event keys and attribute keys.  No need to cut and paste from the optimizely application any longer.
-      Use option-o :
-      s - to set the sdk key to use for optimizely auto-complete.
-      e - to get a list of experiment keys
-      f - to get a list of feature keys
-      t - to get a list of event keys (track)
-      a - to get a list of attribute keys
-      In java, you can use the default control space to bring up a list of experiments or features based on
-      the auto-complete optimizely method you are calling.
+      A plugin for all versions of IntelliJ.
+      The plugin uses the Optimizely Java open source SDK.  It polls for datafile updates so that the latest datafile is available while you are editing.  The plugin is designed to be as light weight as possible so as not to slow down any other features.  You cut and paste your sdk key into the set sdk key dialog and then use the keyboard shortcuts to insert the appropriate Optimizely key.
+
+      The basic actions that are supported:
+      In the pulldown menu, there is a Optimizely option.  From there you can go to:
+
+      Set SDK Key -> set an sdk key.
+
+      If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
+
+      Jump To -> Experiments, Features -> open the Optimizely application edit page for the experiment or feature using your default browser.
+
+      List of Experiments-> experiment key. If chosen, it will insert that key string at the current editor cursor location.
+
+      List of Features-> feature key. If chosen, it will insert that key string at the current editor cursor location.
+
+      List of Variations -> variation key or variable key dending on the last experiment or feature chosen. If chosen, it will insert that key string at the current editor cursor location.
+
+      List of Attritutes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
+
+      List of Events -> valid event keys. If chosen, it will insert that key string at the current editor cursor location.
+
+      Direct keyboard access can be achieved for inplace editing.  Below is a list of keyboard shortcuts:
+      option or alt o :
+
+      s - set the sdk key.
+
+      f - list of feature keys.
+
+      e - list of experiment keys.
+
+      v - list of variable or variation keys depending on which feature or experiment was chosen last.
+
+      t - list of event keys
+
+      a - list of attribute keys.
+
+      Intellij and AndroidStudio can use default autocomplete for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
     ]]>
   </description>
   <change-notes>
@@ -46,31 +88,6 @@
   <vendor url="https://www.optimizely.com">Optimizely SDK</vendor>
 
   <actions>
-    <!-- See https://www.jetbrains.org/intellij/sdk/docs/basics/action_system.html#registering-actions-in-pluginxml
-          for information about the elements and attributes used for actions and groups. -->
-    <!-- This <action> element adds a static menu item in first position of the Tools menu that shows ListAction. -->
-<!--    <action id="com.optimizely.intellij.plugin.action.ListAction="com.optimizely.intellij.plugin.action.ListAction       text="List Features" description="list features of your current sdk key" icon="ActionBasicsIcons.Sdk_default_icon">
-      <keyboard-shortcut first-keystroke="control alt O" second-keystroke="E" keymap="$default"/>
-      <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
-      <add-to-group group-id="ToolsMenu" anchor="first"/>
-    </action>
--->
-    <!-- All of the following menu groups add the action ListAction to menus in different ways.
-          Note that even though these groups reuse the same action class, in each use the action ids are unique. -->
-    <!-- GroupedActions demonstrates declaring an action group using the default ActionGroup implementation provided by the
-          IntelliJ Platform framework. (Note the lack of a group "class" attribute.) GroupedActions gets inserted after ListAction
-          in the Tools menu. Because the group's implementation is default, it cannot impose enable/disable conditions. Instead it
-          must rely on the conditions imposed by the parent menu where it is inserted. It declares one action in the group. -->
- <!--
-    <group id="org.intellij.sdk.action.GroupedActions" text="Optimizely" popup="true" icon="ActionBasicsIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.optimizely.intellij.plugin.action.ListAction   <action class="com.optimizely.intellij.plugin.action.ListActionrg.intellij.sdk.action.ExperimentAction"
-              text="List Experiments" description="list of experiments in current project" icon="ActionBasicsIcons.Sdk_default_icon">
-      </action>
-      <action class="com.optimizely.intellij.plugin.action.ListActionrg.intellij.sdk.action.FeatureAction"
-              text="List Features" description="list of features in current project" icon="ActionBasicsIcons.Sdk_default_icon">
-      </action>
-    </group>
--->
     <!-- OptimizelyActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this plugin.
           This group is to be inserted atop the Editor Popup Menu. It declares one action in the group. -->
     <group id="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" class="com.optimizely.intellij.plugin.action.OptimizelyActionGroup" popup="true"
@@ -115,14 +132,6 @@
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
     </group>
-    <!-- DynamicActionGroup demonstrates declaring an action group without a static action declaration.
-          An action is added to the group programmatically in the DynamicActionGroup implementation. -->
-<!--
-    <group id="com.optimizely.intellij.plugin.action.DynamicActionGroup" class="com.optimizely.intellij.plugin.action.DynamicActionGroup" popup="true"
-           text="Dynamically Grouped Actions" description="SDK dynamically grouped action example" icon="ActionBasicsIcons.Sdk_default_icon">
-      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.intellij.sdk.action.GroupedActions"/>
-    </group>
--->
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
