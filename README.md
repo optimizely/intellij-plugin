@@ -49,9 +49,6 @@ The Optimizely Plugin uses the [Optimizely Java SDK](https://github.com/optimize
 `core-api` requires [org.slf4j:slf4j-api:1.7.16](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.16) and a supported JSON parser. 
 We currently integrate with [Jackson](https://github.com/FasterXML/jackson), [GSON](https://github.com/google/gson), [json.org](http://www.json.org),
 and [json-simple](https://code.google.com/archive/p/json-simple); if any of those packages are available at runtime, they will be used by `core-api`.
-If none of those packages are already provided in your project's classpath, one will need to be added. `core-httpclient-impl` is an optional 
-dependency that implements the event dispatcher and requires [org.apache.httpcomponents:httpclient:4.5.2](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.5.2).
-The supplied `pom` files on Bintray define module dependencies.
 
 ### Contributing
 
