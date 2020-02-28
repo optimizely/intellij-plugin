@@ -1,0 +1,3 @@
+<plugins>
+    <plugin id="OptimizelyPlugin" url="https://github.com/optimizely/intellij-plugin/build/distributions/OptimizelyPlugin-1.0.0.zip" version="1.0-alpha-1"/>
+</plugins>
