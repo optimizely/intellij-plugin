@@ -28,6 +28,17 @@ public class OptimizelyUtil {
                 || text.endsWith("getFeatureVariableBoolean()");
     }
 
+    public static Boolean isOptimizelyMethodCamelCase(String text) {
+        return text.endsWith("activate()")
+                || text.endsWith("get_variation()")
+                || text.endsWith("is_feature_enabled()")
+                || text.endsWith("get_feature_variable()")
+                || text.endsWith("get_feature_variable_string()")
+                || text.endsWith("get_feature_variable_double()")
+                || text.endsWith("get_feature_variable_integer()")
+                || text.endsWith("get_feature_variable_boolean()");
+    }
+
     public static Boolean isOptimizelyInstanceValid(OptimizelyFactoryService factoryService) {
         return (factoryService != null
                 && factoryService.getCurrentOptimizely() != null
@@ -37,5 +48,9 @@ public class OptimizelyUtil {
 
     public static Boolean isExperimentApi(String text) {
         return text.endsWith("activate()") || text.endsWith("getVariation()");
+    }
+
+    public static Boolean isExperimentApiCamelCase(String text) {
+        return text.endsWith("activate()") || text.endsWith("get_variation()");
     }
 }

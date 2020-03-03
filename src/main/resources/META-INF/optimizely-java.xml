@@ -17,6 +17,6 @@
 
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
-    <completion.contributor language="JAVA" implementationClass="com.optimizely.intellij.plugin.contributor.OptimizelyJavaComplete"/>
+    <completion.contributor language="JAVA" implementationClass="com.optimizely.intellij.plugin.contributor.java.OptimizelyJavaComplete"/>
   </extensions>
 </idea-plugin>

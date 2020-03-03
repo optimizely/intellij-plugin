@@ -15,6 +15,13 @@ repositories {
   jcenter()
 }
 
+sourceSets {
+  main {
+    java {
+      exclude 'com/optimizely/intellij/plugin/contributor/python/**'
+    }
+  }
+}
 dependencies {
   implementation 'com.optimizely.ab:core-api:3.4.1'
   implementation 'com.optimizely.ab:core-httpclient-impl:3.4.1'

@@ -38,6 +38,14 @@ intellij {
   plugins = ['java', 'Kotlin', 'android']
 }
 
+sourceSets {
+  main {
+    java {
+      exclude 'com/optimizely/intellij/plugin/contributor/java/**'
+    }
+  }
+}
+
 runIde {
   // Absolute path to installed target v3.5 Android Studio to use as IDE Development Instance
   // The "Contents" directory is macOS specific.
