@@ -28,11 +28,11 @@ public class OptimizelyGoComplete extends CompletionContributor {
                     @Override
                     protected void addCompletions(@NotNull CompletionParameters parameters, @NotNull ProcessingContext context, @NotNull CompletionResultSet result) {
 
-                        System.out.println("got here");
+                        //System.out.println("got here");
                         PsiElement element = parameters.getOriginalPosition();
                         if (element == null) return;
-                        System.out.println(element.getText());
-                        System.out.println (element.toString());
+                        //System.out.println(element.getText());
+                        //System.out.println (element.toString());
 //                        PsiElement parent = element.getParent();
 //                        while (parent != null) {
 //                            System.out.println("Parent");
@@ -43,7 +43,7 @@ public class OptimizelyGoComplete extends CompletionContributor {
 //                        }
                         GoCallExpr methodCallExpression = PsiTreeUtil.getParentOfType(element, GoCallExpr.class);
                         if (methodCallExpression == null) return;
-                        System.out.println(methodCallExpression.getText());
+                        //System.out.println(methodCallExpression.getText());
                         if (!OptimizelyUtil.isOptimizelyMethodGo(methodCallExpression.getText())) {
                             return;
                         }
@@ -75,10 +75,10 @@ public class OptimizelyGoComplete extends CompletionContributor {
                                         factoryService.setSelectedFeatureKey(activeElement);
                                     }
                                 }
-                            });
+                            }).withPsiElement(element).withTypeText("string");
 
                             lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
-                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, -1);
+                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1000);
                             lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 1);
 
                             result.addElement(lookupElement);
