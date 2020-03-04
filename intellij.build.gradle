@@ -19,6 +19,7 @@ sourceSets {
   main {
     java {
       exclude 'com/optimizely/intellij/plugin/contributor/python/**'
+      exclude 'com/optimizely/intellij/plugin/contributor/go/**'
     }
   }
 }

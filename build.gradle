@@ -18,7 +18,8 @@ repositories {
 sourceSets {
     main {
         java {
-            exclude 'com/optimizely/intellij/plugin/contributor/java/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/python/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/kotlin/**'
         }
     }
 }
@@ -40,10 +41,16 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  version '2019.2.4'
-  type 'PC'
+  version '193.5233.102'
+  type 'IU'
   updateSinceUntilBuild = false
+  plugins = ['java', 'org.jetbrains.plugins.go:193.5233.102.83']
 }
+
+runIde {
+    ideDirectory '/Applications/GoLand.app/Contents'
+}
+
 patchPluginXml {
   version = project.version
 }

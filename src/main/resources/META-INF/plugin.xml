@@ -34,6 +34,8 @@
   <depends optional="true" config-file="optimizely-java.xml">com.intellij.modules.java</depends>
   <depends optional="true" config-file="optimizely-kotlin.xml">org.jetbrains.kotlin</depends>
   <depends optional="true" config-file="optimizely-python.xml">com.intellij.modules.python</depends>
+  <!-- <depends optional="true" config-file="optimizely-go.xml">com.intellij.modules.go</depends> -->
+  <depends optional="true" config-file="optimizely-go.xml">org.jetbrains.plugins.go</depends>
   <!-- Text to display as description on Preferences/Settings | Plugin page  -->
   <description>
     <![CDATA[

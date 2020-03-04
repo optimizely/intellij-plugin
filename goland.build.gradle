@@ -18,7 +18,8 @@ repositories {
 sourceSets {
     main {
         java {
-            exclude 'com/optimizely/intellij/plugin/contributor/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/python/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/kotlin/**'
         }
     }
 }

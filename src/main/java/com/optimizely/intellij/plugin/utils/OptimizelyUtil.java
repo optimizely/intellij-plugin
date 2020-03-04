@@ -19,8 +19,7 @@ import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 
 public class OptimizelyUtil {
     public static Boolean isOptimizelyMethod(String text) {
-        return text.endsWith("activate()")
-                || text.endsWith("getVariation()")
+        return isExperimentApi(text)
                 || text.endsWith("isFeatureEnabled()")
                 || text.endsWith("getFeatureVariableString()")
                 || text.endsWith("getFeatureVariableDouble()")
@@ -29,8 +28,7 @@ public class OptimizelyUtil {
     }
 
     public static Boolean isOptimizelyMethodCamelCase(String text) {
-        return text.endsWith("activate()")
-                || text.endsWith("get_variation()")
+        return isExperimentApiCamelCase(text)
                 || text.endsWith("is_feature_enabled()")
                 || text.endsWith("get_feature_variable()")
                 || text.endsWith("get_feature_variable_string()")
@@ -39,11 +37,25 @@ public class OptimizelyUtil {
                 || text.endsWith("get_feature_variable_boolean()");
     }
 
+    public static Boolean isOptimizelyMethodGo(String text) {
+        return isExperimentApiGo(text)
+                || text.endsWith("IsFeatureEnabled()")
+                || text.endsWith("GetFeatureVariable()")
+                || text.endsWith("GetFeatureVariableString()")
+                || text.endsWith("GetFeatureVariableDouble()")
+                || text.endsWith("GetFeatureVariableInteger()")
+                || text.endsWith("GetFeatureVariableBoolean()");
+    }
+
     public static Boolean isOptimizelyInstanceValid(OptimizelyFactoryService factoryService) {
         return (factoryService != null
                 && factoryService.getCurrentOptimizely() != null
                 && factoryService.getCurrentOptimizely().isValid());
 
+    }
+
+    public static Boolean isExperimentApiGo(String text) {
+        return text.endsWith("Activate()") || text.endsWith("GetVariation()");
     }
 
     public static Boolean isExperimentApi(String text) {

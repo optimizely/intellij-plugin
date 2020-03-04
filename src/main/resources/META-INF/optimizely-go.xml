@@ -1,0 +1,5 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor language="go" order="first" id="com.optimizely.intellij.plugin.contributor.go.OptimizelyGoComplete" implementationClass="com.optimizely.intellij.plugin.contributor.go.OptimizelyGoComplete"/>
+    </extensions>
+</idea-plugin>

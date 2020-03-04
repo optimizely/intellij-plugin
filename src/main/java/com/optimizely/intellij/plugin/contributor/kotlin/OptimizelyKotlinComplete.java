@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and      *
  * limitations under the License.                                           *
  ***************************************************************************/
-package com.optimizely.intellij.plugin.contributor.java;
+package com.optimizely.intellij.plugin.contributor.kotlin;
 
 import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.*;
@@ -67,44 +67,25 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
 
                         for (String key : keys) {
 
-                            LookupElement item = PrioritizedLookupElement.withPriority(LookupElementBuilder.create(key, "\"" + key + "\"").withInsertHandler(new InsertHandler<LookupElement>() {
+                            LookupElement lookupElement = LookupElementBuilder.create(key, "\"" + key + "\"").withInsertHandler(new InsertHandler<LookupElement>() {
                                 @Override
                                 public void handleInsert(@NotNull InsertionContext context, @NotNull LookupElement item) {
-                                    String activeElement = (String) item.getObject();
+                                    String activeElement = (String)item.getObject();
                                     if (setCurrentExperiment) {
                                         factoryService.setSelectedExperimentKey(activeElement);
-                                    } else {
+                                    }
+                                    else {
                                         factoryService.setSelectedFeatureKey(activeElement);
                                     }
                                 }
-                            }), 1);
+                            });
 
-                            LookupElementRenderer<LookupElementDecorator<LookupElement>> highlightRenderer =
-                                    new LookupElementRenderer<LookupElementDecorator<LookupElement>>() {
-                                        @Override
-                                        public void renderElement(
-                                                LookupElementDecorator<LookupElement> element,
-                                                LookupElementPresentation presentation) {
-                                            element.getDelegate().renderElement(presentation);
-                                            presentation.setTypeText("\n");
-//                                            final LookupImpl lookup = (LookupImpl)LookupManager.getInstance(parameters.getEditor().getProject()).getActiveLookup();
-//                                            if (lookup != null) {
-//                                                if (!ranOnce[0]) {
-//                                                    Runnable runnable = () -> {lookup.setSelectedIndex(0);lookup.setCurrentItem(element);lookup.ensureSelectionVisible(true);};
-//                                                    Runnable after = () -> {lookup.setLastVisibleIndex(0);};
-//                                                    ApplicationManager.getApplication().invokeLater(runnable);
-//                                                    ApplicationManager.getApplication().invokeLater(after);
-//                                                    ranOnce[0] = true;
-//                                                }
-//                                            }
-//                                            else {
-//                                                System.out.println("no lookup impl");
-//                                            }
-                                        }
-                                    };
-                            item = LookupElementDecorator.withRenderer(item, highlightRenderer);
+                            lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
+                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1);
+                            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 0);
 
-                            result.addElement(item);
+                            result.addElement(lookupElement);
+
                             //result.stopHere();
                             //AutoPopupController.getInstance(parameters.getEditor().getProject()).scheduleAutoPopup(parameters.getEditor(), CompletionType.BASIC, Condition.TRUE);
                             //AutoPopupController.getInstance(parameters.getEditor().getProject()).scheduleAutoPopup(parameters.getEditor());

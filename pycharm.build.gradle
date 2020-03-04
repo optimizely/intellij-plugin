@@ -19,6 +19,8 @@ sourceSets {
     main {
         java {
             exclude 'com/optimizely/intellij/plugin/contributor/java/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/kotlin/**'
+            exclude 'com/optimizely/intellij/plugin/contributor/go/**'
         }
     }
 }
