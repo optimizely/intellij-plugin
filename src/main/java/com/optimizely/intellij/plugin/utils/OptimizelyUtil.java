@@ -40,6 +40,7 @@ public class OptimizelyUtil {
     public static Boolean isOptimizelyMethodGo(String text) {
         return isExperimentApiGo(text)
                 || text.endsWith("IsFeatureEnabled()")
+                || text.endsWith("GetAllFeatureVariables()")
                 || text.endsWith("GetFeatureVariable()")
                 || text.endsWith("GetFeatureVariableString()")
                 || text.endsWith("GetFeatureVariableDouble()")
