@@ -33,15 +33,14 @@ import com.intellij.pom.Navigatable;
 import com.optimizely.ab.Optimizely;
 import com.optimizely.ab.config.HttpProjectConfigManager;
 import com.optimizely.ab.config.ProjectConfigManager;
+import com.optimizely.ab.config.Variation;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -95,13 +94,11 @@ public class ListAction extends AnAction {
 
     // Using the event, create and show a dialog
     Project currentProject = event.getProject();
-    StringBuffer dlgMsg = new StringBuffer(event.getPresentation().getText() + " Selected!");
-    String dlgTitle = event.getPresentation().getDescription();
+
+    if (currentProject == null) return;
+    
     // If an element is selected in the editor, add info about it.
-    Navigatable nav = event.getData(CommonDataKeys.NAVIGATABLE);
-    if (nav != null) {
-      dlgMsg.append(String.format("\nSelected Element: %s", nav.toString()));
-    }
+    //Navigatable nav = event.getData(CommonDataKeys.NAVIGATABLE);
 
     List list;
     String title = "Experiments";
@@ -115,13 +112,13 @@ public class ListAction extends AnAction {
       title = "Features";
     }
     else if (id.contains("Event")) {
-      list = new ArrayList<String>(optimizely.getProjectConfig().getEventNameMapping().keySet());
+      list = new ArrayList<String>(Objects.requireNonNull(optimizely.getProjectConfig()).getEventNameMapping().keySet());
       title = "Events";
     }
     else if (id.contains("Variation")) {
       if (factory.getSelectedExperiment() != null) {
         title = factory.getSelectedExperiment().getKey() + " Variations";
-        list = factory.getSelectedExperiment().getVariations().stream().map(variation -> variation.getKey()).collect(Collectors.toList());
+        list = factory.getSelectedExperiment().getVariations().stream().map(Variation::getKey).collect(Collectors.toList());
       }
       else if (factory.getSelectedFeature() != null) {
         title = factory.getSelectedFeature().getKey() + " Variables";
