@@ -96,7 +96,7 @@ public class ListAction extends AnAction {
     Project currentProject = event.getProject();
 
     if (currentProject == null) return;
-    
+
     // If an element is selected in the editor, add info about it.
     //Navigatable nav = event.getData(CommonDataKeys.NAVIGATABLE);
 

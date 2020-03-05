@@ -76,7 +76,7 @@
 
       a - list of attribute keys.
 
-      Intellij and AndroidStudio can use default autocomplete for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
+      You can also use default autocomplete for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
     ]]>
   </description>
   <change-notes>
