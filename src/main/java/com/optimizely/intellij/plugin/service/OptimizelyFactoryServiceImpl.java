@@ -23,13 +23,14 @@ import com.optimizely.ab.config.ProjectConfigManager;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
     private Map<String, Optimizely> sdkKeyMap = new HashMap<>();
     private Optimizely currentOptimizely;
-    private Experiment currentExperiment;
-    private FeatureFlag currentFeatureFlag;
+    private String currentExperimentKey;
+    private String currentFeatureFlagKey;
     private String currentSDKKey;
 
     @Override
@@ -66,26 +67,22 @@ public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
     @Override
     public void setSelectedExperimentKey(String key) {
         if (currentOptimizely != null) {
-            currentExperiment = currentOptimizely.getProjectConfig().getExperimentForKey(key, null);
-            currentFeatureFlag = null;
+            currentExperimentKey = key;
+            currentFeatureFlagKey = null;
         }
     }
 
     @Override
     public void setSelectedFeatureKey(String key) {
         if (currentOptimizely != null) {
-            currentFeatureFlag = currentOptimizely.getProjectConfig().getFeatureKeyMapping().get(key);
-            currentExperiment = null;
+            currentFeatureFlagKey = key;
+            currentExperimentKey = null;
         }
     }
 
     @Override
-    public Experiment getSelectedExperiment() {
-        return currentExperiment;
-    }
+    public Experiment getSelectedExperiment() { return currentExperimentKey == null? null : Objects.requireNonNull(currentOptimizely.getProjectConfig()).getExperimentForKey(currentExperimentKey, null); }
 
     @Override
-    public FeatureFlag getSelectedFeature() {
-        return currentFeatureFlag;
-    }
+    public FeatureFlag getSelectedFeature() { return currentFeatureFlagKey == null ? null : currentOptimizely.getProjectConfig().getFeatureKeyMapping().get(currentFeatureFlagKey); }
 }
