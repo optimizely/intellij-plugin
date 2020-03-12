@@ -19,8 +19,8 @@
   <id>com.optimizely.intellij.sdk.action</id>
 
   <!-- Text to display as name on Preferences/Settings | Plugin page -->
-  <name>SDK: Optimizely code complete</name>
-
+  <name>Optimizely feature flag and experiment integration utility </name>
+  
   <!-- The version of this plugin -->
   <version>1.0.0</version>
 

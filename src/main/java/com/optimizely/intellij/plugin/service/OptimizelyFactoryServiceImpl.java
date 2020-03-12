@@ -16,10 +16,7 @@
 package com.optimizely.intellij.plugin.service;
 
 import com.optimizely.ab.Optimizely;
-import com.optimizely.ab.config.Experiment;
-import com.optimizely.ab.config.FeatureFlag;
-import com.optimizely.ab.config.HttpProjectConfigManager;
-import com.optimizely.ab.config.ProjectConfigManager;
+import com.optimizely.ab.config.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,11 +42,17 @@ public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
                     .withConfigManager(projectConfigManager)
                     .build();
 
-            sdkKeyMap.put(sdkKey, optimizely);
+            if (optimizely.getOptimizelyConfig() == null) {
+                optimizely.close();
+                return null;
+            }
 
+            sdkKeyMap.put(sdkKey, optimizely);
         }
         currentOptimizely = sdkKeyMap.get(sdkKey);
         currentSDKKey = sdkKey;
+        currentExperimentKey = null;
+        currentFeatureFlagKey = null;
 
         return currentOptimizely;
     }
@@ -84,5 +87,5 @@ public class OptimizelyFactoryServiceImpl implements OptimizelyFactoryService {
     public Experiment getSelectedExperiment() { return currentExperimentKey == null? null : Objects.requireNonNull(currentOptimizely.getProjectConfig()).getExperimentForKey(currentExperimentKey, null); }
 
     @Override
-    public FeatureFlag getSelectedFeature() { return currentFeatureFlagKey == null ? null : currentOptimizely.getProjectConfig().getFeatureKeyMapping().get(currentFeatureFlagKey); }
+    public FeatureFlag getSelectedFeature() { return currentFeatureFlagKey == null ? null : Objects.requireNonNull(currentOptimizely.getProjectConfig()).getFeatureKeyMapping().get(currentFeatureFlagKey); }
 }

@@ -39,14 +39,14 @@ public class SetAction extends AnAction {
         
         OptimizelyFactoryService service = ServiceManager.getService(OptimizelyFactoryService.class);
 
-        service.getBySDKKey(txt);
+        Optimizely optimizely = service.getBySDKKey(txt);
 
-//        if (optimizely.isValid()) {
-//            Messages.showErrorDialog("Optimizely did not intialize correctly with sdk key " + txt, "Problem with SDK Key");
-//        }
-//        else {
-//            Messages.showInfoMessage("Optimizely intialized correctly", "Use Optimizely");
-//        }
+        if (optimizely == null || !optimizely.isValid()) {
+            Messages.showErrorDialog("Optimizely did not intialize correctly with sdk key " + txt, "Problem with SDK Key");
+        }
+        else {
+            Messages.showInfoMessage("Optimizely intialized correctly", "Use Optimizely");
+        }
 
     }
 }
