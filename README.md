@@ -1,42 +1,54 @@
 Optimizely IntelliJ Plugin
 ===================
 
-A plugin for all versions of IntelliJ. 
-The plugin uses the Optimizely Java open source SDK.  It polls for datafile updates so that the latest datafile is available while you are editing.  The plugin is designed to be as light weight as possible so as not to slow down any other features.  You cut and paste your sdk key into the set sdk key dialog and then use the keyboard shortcuts to insert the appropriate Optimizely key.
+This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for all IntelliJ Platform based IDEs.
 
-The basic actions that are supported:
-In the pulldown menu, there is a Optimizely option.  From there you can go to:
+Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), the plugin provides a set of shortcuts and contextual links back to the relevant entities within your Optimizely application.
 
-Set SDK Key -> set an sdk key.
+After installation, the plugin will prompt you for your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
+
+Once the SDK key is in place, the active Experiments, Features, Attributes and Events from your Environment will be accessible both via the Dropdown menu under Tools, and via keyboard shortcuts.
+
+## Menu Options
+#### Set SDK Key
+set or update your sdk key.
 
 If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
 
-Jump To -> Experiments, Features -> open the Optimizely application edit page for the experiment or feature using your default browser.
+#### Jump To
 
-List of Experiments-> experiment key. If chosen, it will insert that key string at the current editor cursor location.
+Provide direct links to your Experiments and Features within the Optimizely application, opening within your default OS browser.
 
-List of Features-> feature key. If chosen, it will insert that key string at the current editor cursor location.
+#### List of Experiments
+Displays a dropdown of the Experiment Keys of all Experiments that are currently Running within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-List of Variations -> variation key or variable key dending on the last experiment or feature chosen. If chosen, it will insert that key string at the current editor cursor location.
+#### List of Features
+Displays a list of the Feature Keys of all non-archived Features within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-List of Attritutes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List of Variations
+Displays the Variation Key or Variable Key of the most recently selected Experiment or Feature. Selecting a key will insert that key string at the current editor cursor location.
 
-List of Events -> valid event keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List of Attributes
+Displays all non-archived Attribute keys within the selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-Direct keyboard access can be achieved for inplace editing.  Below is a list of keyboard shortcuts:
-option or alt o :
+#### List of Events
+Displays a list of all non-archived event keys within the selected environment.Selecting a key will insert that key string at the current editor cursor location.
 
-s - set the sdk key.
 
-f - list of feature keys.
+### Keyboard Shortcuts
+Direct keyboard access can be achieved for in-place editing.  All shortcuts can be initiated by entering `option` or `alt o`
 
-e - list of experiment keys.
+`s` - set the sdk key.
 
-v - list of variable or variation keys depending on which feature or experiment was chosen last.
+`f` - list of feature keys.
 
-t - list of event keys
+`e` - list of experiment keys.
 
-a - list of attribute keys.
+`v` - list of variable or variation keys depending on which feature or experiment was chosen last.
+
+`t` - list of event keys
+
+`a` - list of attribute keys.
 
 Intellij and AndroidStudio can use default autocomplete for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
 
@@ -76,7 +88,7 @@ Copyright &copy; 2008 Google Inc.
 License (Apache 2.0): [https://github.com/google/gson/blob/master/LICENSE](https://github.com/google/gson/blob/master/LICENSE)
 
 **JSON-java** [https://github.com/stleary/JSON-java](https://github.com/stleary/JSON-java)  
-Copyright &copy; 2002 JSON.org 
+Copyright &copy; 2002 JSON.org
 License (The JSON License): [https://github.com/stleary/JSON-java/blob/master/LICENSE](https://github.com/stleary/JSON-java/blob/master/LICENSE)
 
 **JSON.simple** [https://code.google.com/archive/p/json-simple/](https://code.google.com/archive/p/json-simple/)  
