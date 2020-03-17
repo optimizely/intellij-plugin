@@ -19,19 +19,19 @@ If the SDK key is set, it is displayed at the top level and the Jump To menu is 
 
 Provide direct links to your Experiments and Features within the Optimizely application, opening within your default OS browser.
 
-#### List of Experiments
+#### List Experiments
 Displays a dropdown of the Experiment Keys of all Experiments that are currently Running within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List of Features
+#### List Features
 Displays a list of the Feature Keys of all non-archived Features within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List of Variations
+#### List Variations
 Displays the Variation Key or Variable Key of the most recently selected Experiment or Feature. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List of Attributes
+#### List Attributes
 Displays all non-archived Attribute keys within the selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List of Events
+#### List Events
 Displays a list of all non-archived event keys within the selected environment.Selecting a key will insert that key string at the current editor cursor location.
 
 
@@ -58,7 +58,7 @@ There are different gradle configurations depending on where you are building an
 
 #### Dependencies
 The Optimizely Plugin uses the [Optimizely Java SDK](https://github.com/optimizely/java-sdk)
-`core-api` requires [org.slf4j:slf4j-api:1.7.16](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.16) and a supported JSON parser. 
+`core-api` requires [org.slf4j:slf4j-api:1.7.16](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.16) and a supported JSON parser.
 We currently integrate with [Jackson](https://github.com/FasterXML/jackson), [GSON](https://github.com/google/gson), [json.org](http://www.json.org),
 and [json-simple](https://code.google.com/archive/p/json-simple); if any of those packages are available at runtime, they will be used by `core-api`.
 
