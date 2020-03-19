@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
  * Dynamic group of Experiments and Features.  Uses JumpToAction to jump to the edit page for Optimizely
  * entity
  *
- * @author Thomas Zurkan
  * @see ActionGroup
  */
 public class DynamicActionGroup extends ActionGroup {

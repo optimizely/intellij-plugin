@@ -1,37 +1,35 @@
 Optimizely IntelliJ Plugin
-===================
+==========================
 
-This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for all IntelliJ Platform based IDEs.
+This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs (AndroidStudio, GoLand, IntelliJ, and PyCharm).
 
 Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), the plugin provides a set of shortcuts and contextual links back to the relevant entities within your Optimizely application.
 
-After installation, the plugin will prompt you for your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
+After installation, use the menu or keyboard shortcut to set your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
 
 Once the SDK key is in place, the active Experiments, Features, Attributes and Events from your Environment will be accessible both via the Dropdown menu under Tools, and via keyboard shortcuts.
 
 ## Menu Options
 #### Set SDK Key
-set or update your sdk key.
-
+Set or update your SDK Key.
 If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
 
 #### Jump To
-
 Provide direct links to your Experiments and Features within the Optimizely application, opening within your default OS browser.
 
-#### List Experiments
+#### List Experiment Keys
 Displays a dropdown of the Experiment Keys of all Experiments that are currently Running within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List Features
+#### List Feature Keys
 Displays a list of the Feature Keys of all non-archived Features within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List Variations
+#### List Variation Keys
 Displays the Variation Key or Variable Key of the most recently selected Experiment or Feature. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List Attributes
+#### List Attribute Keys
 Displays all non-archived Attribute keys within the selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-#### List Events
+#### List Event Keys
 Displays a list of all non-archived event keys within the selected environment.Selecting a key will insert that key string at the current editor cursor location.
 
 
@@ -50,7 +48,7 @@ Direct keyboard access can be achieved for in-place editing.  All shortcuts can 
 
 `a` - list of attribute keys.
 
-Intellij and AndroidStudio can use default autocomplete for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
+Default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
 #### Gradle
 
@@ -74,8 +72,6 @@ First-party code (under core-api/ and core-httpclient-impl) is copyright Optimiz
 
 This software incorporates code from the following open source projects:
 
-#### core-api module
-
 **SLF4J** [https://www.slf4j.org ](https://www.slf4j.org)  
 Copyright &copy; 2004-2017 QOS.ch  
 License (MIT): [https://www.slf4j.org/license.html](https://www.slf4j.org/license.html)
@@ -83,27 +79,13 @@ License (MIT): [https://www.slf4j.org/license.html](https://www.slf4j.org/licens
 **Jackson Annotations** [https://github.com/FasterXML/jackson-annotations](https://github.com/FasterXML/jackson-annotations)  
 License (Apache 2.0): [https://github.com/FasterXML/jackson-annotations/blob/master/src/main/resources/META-INF/LICENSE](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/resources/META-INF/LICENSE)
 
-**Gson** [https://github.com/google/gson ](https://github.com/google/gson)  
-Copyright &copy; 2008 Google Inc.
-License (Apache 2.0): [https://github.com/google/gson/blob/master/LICENSE](https://github.com/google/gson/blob/master/LICENSE)
-
-**JSON-java** [https://github.com/stleary/JSON-java](https://github.com/stleary/JSON-java)  
-Copyright &copy; 2002 JSON.org
-License (The JSON License): [https://github.com/stleary/JSON-java/blob/master/LICENSE](https://github.com/stleary/JSON-java/blob/master/LICENSE)
-
-**JSON.simple** [https://code.google.com/archive/p/json-simple/](https://code.google.com/archive/p/json-simple/)  
-Copyright &copy; January 2004  
-License (Apache 2.0): [https://github.com/fangyidong/json-simple/blob/master/LICENSE.txt](https://github.com/fangyidong/json-simple/blob/master/LICENSE.txt)
-
 **Jackson Databind** [https://github.com/FasterXML/jackson-databind](https://github.com/FasterXML/jackson-databind)   
 License (Apache 2.0): [https://github.com/FasterXML/jackson-databind/blob/master/src/main/resources/META-INF/LICENSE](https://github.com/FasterXML/jackson-databind/blob/master/src/main/resources/META-INF/LICENSE)
-
-#### core-httpclient-impl module
-
-**Gson** [https://github.com/google/gson ](https://github.com/google/gson)  
-Copyright &copy; 2008 Google Inc.
-License (Apache 2.0): [https://github.com/google/gson/blob/master/LICENSE](https://github.com/google/gson/blob/master/LICENSE)
 
 **Apache HttpClient** [https://hc.apache.org/httpcomponents-client-ga/index.html ](https://hc.apache.org/httpcomponents-client-ga/index.html)  
 Copyright &copy; January 2004
 License (Apache 2.0): [https://github.com/apache/httpcomponents-client/blob/master/LICENSE.txt](https://github.com/apache/httpcomponents-client/blob/master/LICENSE.txt)
+
+**Logback Classic Module** 
+Eclipse Public License - v 1.0:	[http://www.eclipse.org/legal/epl-v10.html](http://www.eclipse.org/legal/epl-v10.html)
+GNU Lesser General Public License: [http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
