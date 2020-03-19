@@ -1,46 +1,55 @@
 Optimizely IntelliJ Plugin
 ==========================
 
-A plugin for all versions of IntelliJ. 
-The plugin uses the [Optimizely Java SDK](https://github.com/optimizely/java-sdk).  It polls for datafile updates so that the latest datafile is available while you are editing.  The plugin is designed to be as light weight as possible so as not to slow down any other features.  You cut and paste your SDK key into the Set SDK key dialog and then use the keyboard shortcuts to insert the appropriate Optimizely key.
+This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs (AndroidStudio, GoLand, IntelliJ, and PyCharm).
 
-The following basic actions are supported:
+Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), the plugin provides a set of shortcuts and contextual links back to the relevant entities within your Optimizely application.
 
-In the pulldown menu, there is a Optimizely option.  From there you can go to:
+After installation, use the menu or keyboard shortcut to set your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
 
-* Set SDK Key -> set an sdk key.
+Once the SDK key is in place, the active Experiments, Features, Attributes and Events from your Environment will be accessible both via the Dropdown menu under Tools, and via keyboard shortcuts.
+Default autocomplete will also work for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
-    * If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
+## Menu Options
+#### Set SDK Key
+Set or update your SDK Key.
+If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
 
-    * Jump To -> Experiments, Features -> open the Optimizely application edit page for the experiment or feature using your default browser.
+#### Jump To
+Provide direct links to your Experiments and Features within the Optimizely application, opening within your default OS browser.
 
-* List of Experiments-> valid experiment keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List Experiment Keys
+Displays a dropdown of the Experiment Keys of all Experiments that are currently Running within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-* List of Features-> valid feature keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List Feature Keys
+Displays a list of the Feature Keys of all non-archived Features within your selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-* List of Events -> valid event keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List Variation Keys
+Displays the Variation Key or Variable Key of the most recently selected Experiment or Feature. Selecting a key will insert that key string at the current editor cursor location.
 
-* List of Attributes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
+#### List Attribute Keys
+Displays all non-archived Attribute keys within the selected environment. Selecting a key will insert that key string at the current editor cursor location.
 
-* List of Variations -> variation key or variable key depending on the last experiment or feature chosen. If chosen, it will insert that key string at the current editor cursor location.
+#### List Event Keys
+Displays a list of all non-archived event keys within the selected environment.Selecting a key will insert that key string at the current editor cursor location.
 
 
-Direct keyboard access can be achieved for in place editing.  Below is a list of keyboard shortcuts:
-option or alt o :
+### Keyboard Shortcuts
+Direct keyboard access can be achieved for in-place editing.  All shortcuts can be initiated by entering `option` or `alt o`
 
-* s - set the SDK key.
+`s` - set the sdk key.
 
-* f - list of feature keys.
+`f` - list of feature keys.
 
-* e - list of experiment keys.
+`e` - list of experiment keys.
 
-* t - list of event keys.
+`v` - list of variable or variation keys depending on which feature or experiment was chosen last.
 
-* a - list of attribute keys.
+`t` - list of event keys
 
-* v - list of variable or variation keys depending on which feature or experiment was chosen last.
+`a` - list of attribute keys.
 
-IntelliJ and AndroidStudio can use default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
+Default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
 #### Gradle
 
@@ -48,7 +57,7 @@ There are different gradle configurations depending on where you are building an
 
 #### Dependencies
 The Optimizely Plugin uses the [Optimizely Java SDK](https://github.com/optimizely/java-sdk)
-`core-api` requires [org.slf4j:slf4j-api:1.7.16](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.16) and a supported JSON parser. 
+`core-api` requires [org.slf4j:slf4j-api:1.7.16](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.16) and a supported JSON parser.
 We currently integrate with [Jackson](https://github.com/FasterXML/jackson), [GSON](https://github.com/google/gson), [json.org](http://www.json.org),
 and [json-simple](https://code.google.com/archive/p/json-simple); if any of those packages are available at runtime, they will be used by `core-api`.
 
