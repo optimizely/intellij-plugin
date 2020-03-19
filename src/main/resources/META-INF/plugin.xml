@@ -19,10 +19,10 @@
   <id>com.optimizely.intellij.sdk.action</id>
 
   <!-- Text to display as name on Preferences/Settings | Plugin page -->
-  <name>Optimizely feature flag and experiment integration utility </name>
+  <name>Optimizely</name>
   
   <!-- The version of this plugin -->
-  <version>1.0.0</version>
+  <version>0.0.1</version>
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
