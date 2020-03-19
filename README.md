@@ -55,3 +55,29 @@ and [json-simple](https://code.google.com/archive/p/json-simple); if any of thos
 ### Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md).
+
+### Credits
+
+First-party code (under core-api/ and core-httpclient-impl) is copyright Optimizely, Inc. and contributors, licensed under Apache 2.0.
+
+### Additional Code
+
+This software incorporates code from the following open source projects:
+
+**SLF4J** [https://www.slf4j.org ](https://www.slf4j.org)  
+Copyright &copy; 2004-2017 QOS.ch  
+License (MIT): [https://www.slf4j.org/license.html](https://www.slf4j.org/license.html)
+
+**Jackson Annotations** [https://github.com/FasterXML/jackson-annotations](https://github.com/FasterXML/jackson-annotations)  
+License (Apache 2.0): [https://github.com/FasterXML/jackson-annotations/blob/master/src/main/resources/META-INF/LICENSE](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/resources/META-INF/LICENSE)
+
+**Jackson Databind** [https://github.com/FasterXML/jackson-databind](https://github.com/FasterXML/jackson-databind)   
+License (Apache 2.0): [https://github.com/FasterXML/jackson-databind/blob/master/src/main/resources/META-INF/LICENSE](https://github.com/FasterXML/jackson-databind/blob/master/src/main/resources/META-INF/LICENSE)
+
+**Apache HttpClient** [https://hc.apache.org/httpcomponents-client-ga/index.html ](https://hc.apache.org/httpcomponents-client-ga/index.html)  
+Copyright &copy; January 2004
+License (Apache 2.0): [https://github.com/apache/httpcomponents-client/blob/master/LICENSE.txt](https://github.com/apache/httpcomponents-client/blob/master/LICENSE.txt)
+
+**Logback Classic Module** 
+Eclipse Public License - v 1.0:	[http://www.eclipse.org/legal/epl-v10.html](http://www.eclipse.org/legal/epl-v10.html)
+GNU Lesser General Public License: [http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
