@@ -8,6 +8,7 @@ Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), 
 After installation, use the menu or keyboard shortcut to set your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
 
 Once the SDK key is in place, the active Experiments, Features, Attributes and Events from your Environment will be accessible both via the Dropdown menu under Tools, and via keyboard shortcuts.
+Default autocomplete will also work for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
 ## Menu Options
 #### Set SDK Key
