@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'org.intellij.sdk'
-version '1.0.0'
+version '0.1.0'
 
 sourceCompatibility = 1.8
 
@@ -15,15 +15,14 @@ repositories {
   jcenter()
 }
 
-sourceSets {
-    main {
-        java {
-            exclude 'com/optimizely/intellij/plugin/contributor/python/**'
-            exclude 'com/optimizely/intellij/plugin/contributor/kotlin/**'
-        }
-    }
-}
-
+//sourceSets {
+//  main {
+//    java {
+//      exclude 'com/optimizely/intellij/plugin/contributor/python/**'
+//      exclude 'com/optimizely/intellij/plugin/contributor/go/**'
+//    }
+//  }
+//}
 dependencies {
   implementation 'com.optimizely.ab:core-api:3.4.1'
   implementation 'com.optimizely.ab:core-httpclient-impl:3.4.1'
@@ -41,16 +40,11 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  version '193.5233.102'
-  type 'IU'
+  version 'IU-2019.3.4'
   updateSinceUntilBuild = false
-  plugins = ['java', 'org.jetbrains.plugins.go:193.5233.102.83']
+//  plugins = ['java', 'org.jetbrains.kotlin:1.3.61-release-IJ2019.2-1']
+  plugins = ['java', 'Kotlin', 'org.jetbrains.plugins.go:193.5233.102.83', 'PythonCore:193.6911.25']
 }
-
-runIde {
-    ideDirectory '/Applications/GoLand.app/Contents'
-}
-
 patchPluginXml {
   version = project.version
 }
