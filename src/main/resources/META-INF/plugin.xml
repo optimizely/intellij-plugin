@@ -26,7 +26,7 @@
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
-  <idea-version since-build="191"/>
+  <idea-version since-build="193"/>
 
   <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
   <depends>com.intellij.modules.platform</depends>
