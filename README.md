@@ -1,14 +1,14 @@
 Optimizely IntelliJ Plugin
 ==========================
 
-This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs (AndroidStudio, GoLand, IntelliJ, and PyCharm).
+This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs.
 
 Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), the plugin provides a set of shortcuts and contextual links back to the relevant entities within your Optimizely application.
 
 After installation, use the menu or keyboard shortcut to set your [SDK Key](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile#section-access-the-datafile-via-the-app), which corresponds to a particular Environment in your Optimizely Full Stack Project, and is available under the Settings tab.  
 
 Once the SDK key is in place, the active Experiments, Features, Attributes and Events from your Environment will be accessible both via the Dropdown menu under Tools, and via keyboard shortcuts.
-Default autocomplete will also work for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
+You can also use default autocomplete (go, java, kotlin, python) for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
 ## Menu Options
 #### Set SDK Key
@@ -49,11 +49,11 @@ Direct keyboard access can be achieved for in-place editing.  All shortcuts can 
 
 `a` - list of attribute keys.
 
-Default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
+For languages go, java, kotlin, and python, default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 
 #### Gradle
 
-There are different gradle configurations depending on where you are building and publishing to.  It also creates the appropriate jar and prepares for upload the the plugin repository.
+The build.gradle builds one plugin for all IDEs
 
 #### Dependencies
 The Optimizely Plugin uses the [Optimizely Java SDK](https://github.com/optimizely/java-sdk)
