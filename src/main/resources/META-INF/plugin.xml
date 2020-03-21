@@ -88,7 +88,7 @@
   </change-notes>
 
   <!-- Text to display as company information on Preferences/Settings | Plugin page -->
-  <vendor url="https://www.optimizely.com">Optimizely SDK</vendor>
+  <vendor url="https://www.optimizely.com">Optimizely</vendor>
 
   <actions>
     <!-- OptimizelyActionGroup demonstrates declaring an action group based on a ActionGroup class supplied by this plugin.
