@@ -1,7 +1,8 @@
 Optimizely IntelliJ Plugin
 ==========================
 
-This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs.
+
+This plugin provides quick contextual access to the configuration of your Optimizely Project, and is available for IntelliJ Platform based IDEs. It is available for download on the [Jetbrains Plugin Marketplace](https://plugins.jetbrains.com/plugin/13969-optimizely).
 
 Based around the [Optimizely Java SDK](https://github.com/optimizely/java-sdk), the plugin provides a set of shortcuts and contextual links back to the relevant entities within your Optimizely application.
 
