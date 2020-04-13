@@ -11,11 +11,15 @@ import com.intellij.patterns.PlatformPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ProcessingContext;
+import com.optimizely.ab.optimizelyconfig.OptimizelyFeature;
+import com.optimizely.ab.optimizelyconfig.OptimizelyVariable;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 import com.optimizely.intellij.plugin.utils.OptimizelyUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class OptimizelyGoComplete extends CompletionContributor {
 
@@ -23,28 +27,17 @@ public class OptimizelyGoComplete extends CompletionContributor {
 
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(PsiElement.class),
-                //PlatformPatterns.psiElement(PsiParameter.class).withName("experimentKey").withParent(PsiMethod.class),
                 new CompletionProvider<CompletionParameters>() {
                     @Override
                     protected void addCompletions(@NotNull CompletionParameters parameters, @NotNull ProcessingContext context, @NotNull CompletionResultSet result) {
-
-                        //System.out.println("got here");
                         PsiElement element = parameters.getOriginalPosition();
                         if (element == null) return;
-                        //System.out.println(element.getText());
-                        //System.out.println (element.toString());
-//                        PsiElement parent = element.getParent();
-//                        while (parent != null) {
-//                            System.out.println("Parent");
-//                            System.out.println(parent.getText());
-//                            System.out.println(parent.toString());
-//                            System.out.println(parent.getClass().getName());
-//                            parent = parent.getParent();
-//                        }
                         GoCallExpr methodCallExpression = PsiTreeUtil.getParentOfType(element, GoCallExpr.class);
                         if (methodCallExpression == null) return;
-                        //System.out.println(methodCallExpression.getText());
                         if (!OptimizelyUtil.isOptimizelyMethodGo(methodCallExpression.getText())) {
+                            if (OptimizelyUtil.isGetFeatureSecondParameterGo(methodCallExpression.getText())) {
+                                fillVariation(methodCallExpression.getText(), result);
+                            }
                             return;
                         }
 
@@ -87,5 +80,60 @@ public class OptimizelyGoComplete extends CompletionContributor {
                     }
                 });
     }
+
+    public void fillVariation(String text, CompletionResultSet result) {
+        OptimizelyFactoryService factoryService = ServiceManager.getService(OptimizelyFactoryService.class);
+
+        if (!OptimizelyUtil.isOptimizelyInstanceValid(factoryService)) return;
+
+        int start = text.indexOf("\"") + 1;
+        int end = text.indexOf("\"", start);
+
+        String featureKey = text.substring(start, end);
+
+        OptimizelyFeature feature = factoryService.getCurrentOptimizely().getOptimizelyConfig().getFeaturesMap().get(featureKey);
+
+        if (feature == null) return;
+
+        String filter = "";
+        if (text.matches(OptimizelyUtil.regexPrefix + "GetFeatureVariableString" + OptimizelyUtil.regex)) {
+            filter = "string";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "GetFeatureVariableInteger" + OptimizelyUtil.regex)) {
+            filter = "integer";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "GetFeatureVariableDouble" + OptimizelyUtil.regex)) {
+            filter = "double";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "GetFeatureVariableBoolean" + OptimizelyUtil.regex)) {
+            filter = "boolean";
+        }
+
+        String finalFilter = filter;
+        List<String> vKeys = feature.getVariablesMap().keySet().stream().filter((String k) -> {
+            OptimizelyVariable v = feature.getVariablesMap().get(k);
+            if (!finalFilter.isEmpty()) {
+                if (finalFilter == v.getType()) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return true;
+            }
+        }).collect(Collectors.toList());
+
+        for (String key : vKeys) {
+            LookupElement lookupElement = LookupElementBuilder.create(key, "\"" + key + "\"");
+            lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
+            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1);
+            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 0);
+
+            result.addElement(lookupElement);
+        }
+    }
+
 }
 

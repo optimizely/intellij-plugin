@@ -18,6 +18,17 @@ package com.optimizely.intellij.plugin.utils;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 
 public class OptimizelyUtil {
+    public static String regexPrefix = "(.*)";
+    public static String regex = "\\([\\'\\\"][a-zA-Z0-9\\_\\-]+[\\'\\\"], ?\\)";
+
+    public static Boolean isGetFeatureSecondParameter(String text) {
+        return text.matches(regexPrefix + "getFeatureVariable" + regex)
+                || text.matches(regexPrefix + "getFeatureVariableString" + regex)
+                || text.matches(regexPrefix + "getFeatureVariableDouble" + regex)
+                || text.matches(regexPrefix + "getFeatureVariableInteger" + regex)
+                || text.matches(regexPrefix + "getFeatureVariableBoolean" + regex);
+    }
+
     public static Boolean isOptimizelyMethod(String text) {
         return isExperimentApi(text)
                 || text.endsWith("isFeatureEnabled()")
@@ -25,6 +36,14 @@ public class OptimizelyUtil {
                 || text.endsWith("getFeatureVariableDouble()")
                 || text.endsWith("getFeatureVariableInteger()")
                 || text.endsWith("getFeatureVariableBoolean()");
+    }
+
+    public static Boolean isGetFeatureSecondParameterCamelCase(String text) {
+        return text.matches(regexPrefix + "get_feature_variable" + regex)
+                || text.matches(regexPrefix + "get_feature_variable_string" + regex)
+                || text.matches(regexPrefix + "get_feature_variable_double" + regex)
+                || text.matches(regexPrefix + "get_feature_variable_integer" + regex)
+                || text.matches(regexPrefix + "get_feature_variable_boolean" + regex);
     }
 
     public static Boolean isOptimizelyMethodCamelCase(String text) {
@@ -35,6 +54,14 @@ public class OptimizelyUtil {
                 || text.endsWith("get_feature_variable_double()")
                 || text.endsWith("get_feature_variable_integer()")
                 || text.endsWith("get_feature_variable_boolean()");
+    }
+
+    public static Boolean isGetFeatureSecondParameterGo(String text) {
+        return text.matches(regexPrefix + "GetFeatureVariable" + regex)
+                || text.matches(regexPrefix + "GetFeatureVariableString" + regex)
+                || text.matches(regexPrefix + "GetFeatureVariableDouble" + regex)
+                || text.matches(regexPrefix + "GetFeatureVariableInteger" + regex)
+                || text.matches(regexPrefix + "GetFeatureVariableBoolean" + regex);
     }
 
     public static Boolean isOptimizelyMethodGo(String text) {

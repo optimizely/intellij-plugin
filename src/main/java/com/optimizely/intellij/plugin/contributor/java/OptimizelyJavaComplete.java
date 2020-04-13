@@ -26,11 +26,16 @@ import com.intellij.psi.PsiMethodCallExpression;
 import com.intellij.psi.PsiReferenceExpression;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ProcessingContext;
+import com.optimizely.ab.optimizelyconfig.OptimizelyFeature;
+import com.optimizely.ab.optimizelyconfig.OptimizelyVariable;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 import com.optimizely.intellij.plugin.utils.OptimizelyUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class OptimizelyJavaComplete extends CompletionContributor {
 
@@ -48,6 +53,10 @@ public class OptimizelyJavaComplete extends CompletionContributor {
                         PsiMethodCallExpression methodCallExpression = PsiTreeUtil.getParentOfType(element, PsiMethodCallExpression.class);
                         if (methodCallExpression == null) return;
                         if (!OptimizelyUtil.isOptimizelyMethod(methodCallExpression.getText())) {
+                            if (OptimizelyUtil.isGetFeatureSecondParameter(methodCallExpression.getText())) {
+                                fillVariation(methodCallExpression.getText(), result);
+                            }
+                            // not an optimizely method or not the second parameter of getFeatureVariableXXX
                             return;
                         }
 
@@ -83,5 +92,59 @@ public class OptimizelyJavaComplete extends CompletionContributor {
                         //result.stopHere();
                     }
                 });
+    }
+
+    public static void fillVariation(String text, CompletionResultSet result) {
+        OptimizelyFactoryService factoryService = ServiceManager.getService(OptimizelyFactoryService.class);
+
+        if (!OptimizelyUtil.isOptimizelyInstanceValid(factoryService)) return;
+
+        int start = text.indexOf("\"") + 1;
+        int end = text.indexOf("\"", start);
+
+        String featureKey = text.substring(start, end);
+
+        OptimizelyFeature feature = factoryService.getCurrentOptimizely().getOptimizelyConfig().getFeaturesMap().get(featureKey);
+
+        if (feature == null) return;
+
+        String filter = "";
+        if (text.matches(OptimizelyUtil.regexPrefix + "getFeatureVariableString" + OptimizelyUtil.regex)) {
+            filter = "string";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "getFeatureVariableInteger" + OptimizelyUtil.regex)) {
+            filter = "integer";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "getFeatureVariableDouble" + OptimizelyUtil.regex)) {
+            filter = "double";
+        }
+        else if (text.matches(OptimizelyUtil.regexPrefix + "getFeatureVariableBoolean" + OptimizelyUtil.regex)) {
+            filter = "boolean";
+        }
+
+        String finalFilter = filter;
+        List<String> vKeys = feature.getVariablesMap().keySet().stream().filter((String k) -> {
+            OptimizelyVariable v = feature.getVariablesMap().get(k);
+            if (!finalFilter.isEmpty()) {
+                if (finalFilter == v.getType()) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return true;
+            }
+        }).collect(Collectors.toList());
+
+        for (String key : vKeys) {
+            LookupElement lookupElement = LookupElementBuilder.create(key, "\"" + key + "\"");
+            lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
+            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1);
+            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 0);
+
+            result.addElement(lookupElement);
+        }
     }
 }

@@ -23,6 +23,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ProcessingContext;
+import com.optimizely.intellij.plugin.contributor.java.OptimizelyJavaComplete;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
 import com.optimizely.intellij.plugin.utils.OptimizelyUtil;
 import org.jetbrains.annotations.NotNull;
@@ -47,6 +48,9 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
                         KtCallExpression methodCallExpression = PsiTreeUtil.getParentOfType(element, KtCallExpression.class);
                         if (methodCallExpression == null) return;
                         if (!OptimizelyUtil.isOptimizelyMethod(methodCallExpression.getText())) {
+                            if (OptimizelyUtil.isGetFeatureSecondParameter(methodCallExpression.getText())) {
+                                OptimizelyJavaComplete.fillVariation(methodCallExpression.getText(), result);
+                            }
                             return;
                         }
 
