@@ -79,6 +79,7 @@ t - list of event keys
 a - list of attribute keys.
 <br/>
 You can also use default autocomplete (go, python, java, kotlin) for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
+Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (command-space bar) to the available feature variable or nothing if there is not a match for that variable type for that feature key.
     ]]>
   </description>
   <change-notes>
