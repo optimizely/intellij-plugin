@@ -85,8 +85,8 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
                             });
 
                             lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
-                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1);
-                            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 0);
+                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1000);
+                            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 1);
 
                             result.addElement(lookupElement);
 
