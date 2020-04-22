@@ -1,5 +1,9 @@
 # Optimizely IntelliJ Plugin
 
+## 1.0.0
+April 23, 2020
+Add a Debug dialog that allows you to run experiments, and features without sending backend data.  This way you can confirm your setup before you event complete your project.
+
 ## 0.1.1
 April 13, 2020
 Add support for auto-complete for the variable name in feature variable getters.  

@@ -34,6 +34,8 @@ Displays all non-archived Attribute keys within the selected environment. Select
 #### List Event Keys
 Displays a list of all non-archived event keys within the selected environment.Selecting a key will insert that key string at the current editor cursor location.
 
+#### Debug Dialog
+Intuitive dialog that allows you to test and see log output from running your experiments or features.
 
 ### Keyboard Shortcuts
 Direct keyboard access can be achieved for in-place editing.  All shortcuts can be initiated by entering `option` or `alt o`
@@ -49,6 +51,8 @@ Direct keyboard access can be achieved for in-place editing.  All shortcuts can 
 `t` - list of event keys
 
 `a` - list of attribute keys.
+
+`d` - open debug dialog.
 
 For languages go, java, kotlin, and python, default autocomplete for feature methods such as `isFeatureEnabled` and `getFeatureVariable` to return only a feature key list. Same holds true for experiment methods.
 

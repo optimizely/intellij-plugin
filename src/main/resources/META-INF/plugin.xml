@@ -59,9 +59,11 @@ List of Features-> feature key. If chosen, it will insert that key string at the
 <br/>
 List of Variations -> variation key or variable key dending on the last experiment or feature chosen. If chosen, it will insert that key string at the current editor cursor location.
 <br/>
-List of Attritutes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
+List of Attributes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
 <br/>
 List of Events -> valid event keys. If chosen, it will insert that key string at the current editor cursor location.
+<br/>
+Debug Dialog -> Intuitive dialog that allows you to test and see log output from running your experiments or features.
 <br/>
 Direct keyboard access can be achieved for inplace editing.  Below is a list of keyboard shortcuts:
 option or alt o :
@@ -78,6 +80,8 @@ t - list of event keys
 <br/>
 a - list of attribute keys.
 <br/>
+d - open debug dialog.
+<br/>
 You can also use default autocomplete (go, python, java, kotlin) for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
 Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (command-space bar) to the available feature variable or nothing if there is not a match for that variable type for that feature key.
     ]]>
@@ -85,6 +89,7 @@ Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (
   <change-notes>
     <![CDATA[
       <ul>
+        <li><b>1.0.0</b> Release with a debug dialog that allows you to debug your configuration.</li>
         <li><b>0.1.1</b> Release with auto-complete for feature variable type.</li>
         <li><b>0.1.0</b> Release 2019.3.4 and up with code completion.</li>
       </ul>
