@@ -28,7 +28,10 @@ public class OptDialogWrapper extends DialogWrapper {
     public OptDialogWrapper() {
         super(true); // use current window as parent
         init();
-        setTitle("Test DialogWrapper");
+        setTitle("Optimizely Environment Testing");
+        setOKActionEnabled(false);
+        setOKButtonText("");
+        setCancelButtonText("Dismiss");
     }
 
     @Nullable
@@ -49,7 +52,7 @@ public class OptDialogWrapper extends DialogWrapper {
         dialogPanel.setLayout(bl);
 
         // Set border for the panel
-        dialogPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
+        dialogPanel.setBorder(new EmptyBorder(new Insets(50, 100, 50, 100)));
         //panel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));
 
         String[] methods = {"activate()", "getVariation()", "isFeatureEnabled()", "getFeatureVariableString()",
@@ -87,12 +90,13 @@ public class OptDialogWrapper extends DialogWrapper {
         });
 
         Box b0 = Box.createHorizontalBox();
-
-        JLabel label = new JLabel("This dialog uses the Optimizely Java SDK to test your configuration.\n" +
-                "  The logging might be slightly different on your implementation.");
-
-        b0.add(label);
-
+        Box v = Box.createVerticalBox();
+        b0.add(v);
+        JLabel label = new JLabel("This dialog uses the Optimizely Java SDK 3.4.1 to test your configuration.");
+        v.add(label);
+        v.add( new JLabel("  The logging might be slightly different on your implementation."));
+        JLabel note = new JLabel("**note: This test is using the NoopEventHandler so no events are actually sent to Optimizely.");
+        v.add(note);
         dialogPanel.add(b0);
 
         JLabel userLabel = new JLabel("UserID:");
@@ -252,15 +256,21 @@ public class OptDialogWrapper extends DialogWrapper {
         String value = model.getValueAt(count, 1).toString();
         String type = model.getValueAt(count, 2).toString();
 
-        switch (type) {
-            case "Double":
-                return new Double(value);
-            case "Integer":
-                return new Integer(value);
-            case "String":
-                return value;
-            case "Boolean":
-                return new Boolean(value);
+        try {
+            switch (type) {
+                case "Double":
+                    return new Double(value);
+                case "Integer":
+                    return new Integer(value);
+                case "String":
+                    return value;
+                case "Boolean":
+                    return new Boolean(value);
+            }
+        }
+        catch (Exception e) {
+            // oops. probably a wrong value type.
+            Messages.showErrorDialog(e.getLocalizedMessage(), "Attribute type error");
         }
 
         return null;
@@ -284,7 +294,6 @@ public class OptDialogWrapper extends DialogWrapper {
 
         //actual data for the table in a 2d array
         Object[][] data = new Object[][] {
-                {"", "", ""}
         };
 
         final Class[] columnClass = new Class[] {
