@@ -138,6 +138,11 @@ Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (
         <keyboard-shortcut first-keystroke="alt O" second-keystroke="V" keymap="$default"/>
         <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
       </action>
+      <action id="com.optimizely.intellij.plugin.action.DebugAction" class="com.optimizely.intellij.plugin.action.DebugAction"
+              text="Debug Dialog" description="Run experiment or feature API on your project adding userId and attributes" icon="ActionBasicsIcons.Sdk_default_icon">
+        <keyboard-shortcut first-keystroke="alt O" second-keystroke="D" keymap="$default"/>
+        <mouse-shortcut keystroke="control button2 doubleClick" keymap="$default"/>
+      </action>
     </group>
   </actions>
 
