@@ -22,7 +22,7 @@
   <name>Optimizely</name>
   
   <!-- The version of this plugin -->
-  <version>0.1.1</version>
+  <version>0.2.0</version>
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
@@ -40,31 +40,31 @@
   <description>
     <![CDATA[
 A plugin for all versions of IntelliJ.
-<br/>
+<br/><br/>
 The plugin uses the Optimizely Java open source SDK.  It polls for datafile updates so that the latest datafile is available while you are editing.  The plugin is designed to be as light weight as possible so as not to slow down any other features.  You cut and paste your sdk key into the set sdk key dialog and then use the keyboard shortcuts to insert the appropriate Optimizely key.
-<br/>
+<br/><br/>
 The basic actions that are supported:
 <br/>
 In the pulldown menu, there is a Optimizely option.  From there you can go to:
-<br/>
+<br/><br/>
 Set SDK Key -> set an sdk key.
-<br/>
+<br/><br/>
 If the SDK key is set, it is displayed at the top level and the Jump To menu is available.
 <br/>
 Jump To -> Experiments, Features -> open the Optimizely application edit page for the experiment or feature using your default browser.
-<br/>
+<br/><br/>
 List of Experiments-> experiment key. If chosen, it will insert that key string at the current editor cursor location.
-<br/>
+<br/><br/>
 List of Features-> feature key. If chosen, it will insert that key string at the current editor cursor location.
-<br/>
+<br/><br/>
 List of Variations -> variation key or variable key dending on the last experiment or feature chosen. If chosen, it will insert that key string at the current editor cursor location.
-<br/>
+<br/><br/>
 List of Attributes -> valid attribute keys. If chosen, it will insert that key string at the current editor cursor location.
-<br/>
+<br/><br/>
 List of Events -> valid event keys. If chosen, it will insert that key string at the current editor cursor location.
-<br/>
+<br/><br/>
 Debug Dialog -> Intuitive dialog that allows you to test and see log output from running your experiments or features.
-<br/>
+<br/><br/>
 Direct keyboard access can be achieved for inplace editing.  Below is a list of keyboard shortcuts:
 option or alt o :
 <br/>
@@ -81,9 +81,10 @@ t - list of event keys
 a - list of attribute keys.
 <br/>
 d - open debug dialog.
-<br/>
+<br/><br/>
 You can also use default autocomplete (go, python, java, kotlin) for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
 Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (command-space bar) to the available feature variable or nothing if there is not a match for that variable type for that feature key.
+In order for getFeatureVariable to autocomplete on the feature variable, it relies on the feature key being in place quoted string.
     ]]>
   </description>
   <change-notes>
