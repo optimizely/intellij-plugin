@@ -85,6 +85,10 @@ d - open debug dialog.
 You can also use default autocomplete (go, python, java, kotlin) for feature methods such as isFeatureEnabled and getFeatureVariable to return only a feature key list. Same holds true for experiment methods.
 Methods like getFeatureVariable and getFeatureVariable(Type) will autocomplete (command-space bar) to the available feature variable or nothing if there is not a match for that variable type for that feature key.
 In order for getFeatureVariable to autocomplete on the feature variable, it relies on the feature key being in place quoted string.
+<br/><br/>
+We are relying on you to help us make Optimizely a seamless integration tool for your development environment.
+If you want a new feature, discover a bug, or like it, leave a comment, or open an issue in github.  The plugin is
+open sourced https://github.com/optimizely/intellij-plugin.
     ]]>
   </description>
   <change-notes>
