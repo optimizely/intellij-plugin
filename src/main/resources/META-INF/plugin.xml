@@ -94,7 +94,7 @@ open sourced https://github.com/optimizely/intellij-plugin.
   <change-notes>
     <![CDATA[
       <ul>
-        <li><b>1.0.0</b> Release with a debug dialog that allows you to debug your configuration.</li>
+        <li><b>0.2.0</b> Release with a debug dialog that allows you to debug your configuration.</li>
         <li><b>0.1.1</b> Release with auto-complete for feature variable type.</li>
         <li><b>0.1.0</b> Release 2019.3.4 and up with code completion.</li>
       </ul>
