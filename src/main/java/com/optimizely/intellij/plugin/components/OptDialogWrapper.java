@@ -21,6 +21,7 @@ import java.awt.event.ItemEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Function;
 
 import static javax.swing.BoxLayout.*;
 
@@ -69,9 +70,7 @@ public class OptDialogWrapper extends DialogWrapper {
         variations.setModel(new DefaultComboBoxModel());
         variations.setVisible(false);
 
-        noun.addItemListener(event -> {
-            if (event.getStateChange() != ItemEvent.SELECTED) { return; }
-            String val = (String) event.getItem();
+        Function<String,Void> showVariables = val -> {
             String api = (String) cb.getSelectedItem();
             if (!OptimizelyUtil.isExperimentApi(api)
                     && OptimizelyUtil.isOptimizelyMethod(api)
@@ -87,6 +86,14 @@ public class OptDialogWrapper extends DialogWrapper {
             else {
                 variations.setVisible(false);
             }
+
+            return null;
+        };
+
+        noun.addItemListener(event -> {
+            if (event.getStateChange() != ItemEvent.SELECTED) { return; }
+            String val = (String) event.getItem();
+            showVariables.apply(val);
         });
 
         Box b0 = Box.createHorizontalBox();
@@ -131,7 +138,10 @@ public class OptDialogWrapper extends DialogWrapper {
                 model[0] = new DefaultComboBoxModel(optimizely.getProjectConfig().getEventNameMapping().keySet().toArray());
                 noun.setModel(model[0]);
             }
-            variations.setVisible(false);
+            if (model[0].getSize() > 0) {
+                noun.setSelectedIndex(0);
+                showVariables.apply((String) model[0].getElementAt(0));
+            }
         });
 
         JBTable table = getAttributeTable();
