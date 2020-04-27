@@ -1,6 +1,11 @@
 # Optimizely IntelliJ Plugin
 
-## 1.0.0
+## 0.2.1
+April 25, 2020
+Downgrade the IntelliJ build number to cover all SDKs.  Fix debug dialog so that appropriate variables show up when
+first picking a feature api.
+
+## 0.2.0
 April 23, 2020
 Add a Debug dialog that allows you to run experiments, and features without sending backend data.  This way you can confirm your setup before you event complete your project.
 
