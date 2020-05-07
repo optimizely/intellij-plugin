@@ -1,5 +1,9 @@
 # Optimizely IntelliJ Plugin
 
+## 0.2.2
+May 7, 2020
+Set debug dialog preferred size.
+
 ## 0.2.1
 April 25, 2020
 Downgrade the IntelliJ build number to cover all SDKs.  Fix debug dialog so that appropriate variables show up when

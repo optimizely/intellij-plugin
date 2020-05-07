@@ -22,7 +22,7 @@
   <name>Optimizely</name>
   
   <!-- The version of this plugin -->
-  <version>0.2.1</version>
+  <version>0.2.2</version>
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
@@ -94,6 +94,7 @@ open sourced https://github.com/optimizely/intellij-plugin.
   <change-notes>
     <![CDATA[
       <ul>
+        <li><b>0.2.2</b> Set debug dialog attribute table size a little bigger.</li>
         <li><b>0.2.1</b> Compatible with latest IDEs including AndroidStudio. Cleanup debug dialog.</li>
         <li><b>0.2.0</b> Release with a debug dialog that allows you to debug your configuration.</li>
         <li><b>0.1.1</b> Release with auto-complete for feature variable type.</li>
