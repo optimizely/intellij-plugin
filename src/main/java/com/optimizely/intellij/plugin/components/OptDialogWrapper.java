@@ -340,6 +340,8 @@ public class OptDialogWrapper extends DialogWrapper {
 
         JBTable table = new JBTable(model);
 
+        table.setPreferredSize(new Dimension(250, 250));
+
         TableColumn attr = table.getColumnModel().getColumn(0);
         ComboBox comboBox = new ComboBox(optimizely.getProjectConfig().getAttributes().stream().map(a -> a.getKey()).toArray());
         attr.setCellEditor(new DefaultCellEditor(comboBox));
