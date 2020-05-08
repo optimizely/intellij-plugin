@@ -1,5 +1,9 @@
 # Optimizely IntelliJ Plugin
 
+## 0.2.3
+May 8, 2020
+Fix debug dialog attribute table size and add/delete
+
 ## 0.2.2
 May 7, 2020
 Set debug dialog preferred size.

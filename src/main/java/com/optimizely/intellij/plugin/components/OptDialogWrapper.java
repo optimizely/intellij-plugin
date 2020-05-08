@@ -159,16 +159,20 @@ public class OptDialogWrapper extends DialogWrapper {
             }
         });
 
+        // create table
         JBTable table = getAttributeTable();
 
+        // get the model
         final DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 
+        // add button for creating a new row
         Box buttons = Box.createVerticalBox();
         JButton add = new JButton("+");
         add.addActionListener(e -> {
             tableModel.addRow(new String[]{"", "", ""});
         });
 
+        // add button for removing row
         JButton remove = new JButton("-");
         remove.addActionListener(e -> {
             tableModel.removeRow(tableModel.getRowCount()-1);
@@ -176,8 +180,14 @@ public class OptDialogWrapper extends DialogWrapper {
         buttons.add(add);
         buttons.add(remove);
 
+        // create attribute table box scrolls
         Box attrs = Box.createHorizontalBox();
-        attrs.add(new JBScrollPane(table));
+        JBScrollPane attrPain = new JBScrollPane(table);
+        attrPain.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        attrPain.setPreferredSize(new Dimension(250, 500));
+
+        attrs.add(attrPain);
         attrs.add(buttons);
 
         dialogPanel.add(attrs);
@@ -193,7 +203,7 @@ public class OptDialogWrapper extends DialogWrapper {
         JBScrollPane areaScrollPane = new JBScrollPane(textArea);
         areaScrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(250, 1000));
+        areaScrollPane.setPreferredSize(new Dimension(250, 900));
 
         logging.add(areaScrollPane);
         dialogPanel.add(logging);
@@ -340,7 +350,7 @@ public class OptDialogWrapper extends DialogWrapper {
 
         JBTable table = new JBTable(model);
 
-        table.setPreferredSize(new Dimension(250, 250));
+        table.setPreferredSize(new Dimension(250, 500));
 
         TableColumn attr = table.getColumnModel().getColumn(0);
         ComboBox comboBox = new ComboBox(optimizely.getProjectConfig().getAttributes().stream().map(a -> a.getKey()).toArray());
