@@ -16,6 +16,6 @@
 
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
-    <completion.contributor language="kotlin" id="com.optimizely.intellij.plugin.contributor.kotlin.OptimizelyKotlinComplete" implementationClass="com.optimizely.intellij.plugin.contributor.kotlin.OptimizelyKotlinComplete"/>
+    <completion.contributor order="first" language="kotlin" id="com.optimizely.intellij.plugin.contributor.kotlin.OptimizelyKotlinComplete" implementationClass="com.optimizely.intellij.plugin.contributor.kotlin.OptimizelyKotlinComplete"/>
   </extensions>
 </idea-plugin>

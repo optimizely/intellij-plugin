@@ -1,5 +1,9 @@
 # Optimizely IntelliJ Plugin
 
+## 0.2.4
+May 14, 2020
+Fix kotlin autocomplete.
+
 ## 0.2.3
 May 8, 2020
 Fix debug dialog attribute table size and add/delete

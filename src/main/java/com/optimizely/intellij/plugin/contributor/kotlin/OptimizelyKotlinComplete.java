@@ -18,10 +18,13 @@ package com.optimizely.intellij.plugin.contributor.kotlin;
 import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.*;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.patterns.PlatformPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.ui.IconManager;
+import com.intellij.util.IconUtil;
 import com.intellij.util.ProcessingContext;
 import com.optimizely.intellij.plugin.contributor.java.OptimizelyJavaComplete;
 import com.optimizely.intellij.plugin.service.OptimizelyFactoryService;
@@ -29,15 +32,19 @@ import com.optimizely.intellij.plugin.utils.OptimizelyUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.kotlin.psi.KtCallExpression;
 import org.jetbrains.kotlin.psi.KtNameReferenceExpression;
+import org.jetbrains.kotlin.psi.KtStringTemplateExpression;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Set;
 
 public class OptimizelyKotlinComplete extends CompletionContributor {
+    static int priority = 10000;
 
     public OptimizelyKotlinComplete() {
 
         extend(CompletionType.BASIC,
-                PlatformPatterns.psiElement(LeafPsiElement.class).withParent(KtNameReferenceExpression.class),
+                PlatformPatterns.psiElement(LeafPsiElement.class),
                 //PlatformPatterns.psiElement(PsiParameter.class).withName("experimentKey").withParent(PsiMethod.class),
                 new CompletionProvider<CompletionParameters>() {
                     @Override
@@ -71,7 +78,7 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
 
                         for (String key : keys) {
 
-                            LookupElement lookupElement = LookupElementBuilder.create(key, "\"" + key + "\"").withTypeText("String").withInsertHandler(new InsertHandler<LookupElement>() {
+                            LookupElement lookupElement = LookupElementBuilder.create("\"" + key + "\"").withTypeText("String").withInsertHandler(new InsertHandler<LookupElement>() {
                                 @Override
                                 public void handleInsert(@NotNull InsertionContext context, @NotNull LookupElement item) {
                                     String activeElement = (String)item.getObject();
@@ -84,9 +91,9 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
                                 }
                             });
 
-                            lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
-                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, 1000);
-                            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 1);
+                            //lookupElement = PrioritizedLookupElement.withGrouping(lookupElement, 79);
+                            lookupElement = PrioritizedLookupElement.withPriority(lookupElement, priority++);
+                            lookupElement = PrioritizedLookupElement.withExplicitProximity(lookupElement, 0);
 
                             result.addElement(lookupElement);
 
