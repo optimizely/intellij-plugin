@@ -78,7 +78,7 @@ public class OptimizelyKotlinComplete extends CompletionContributor {
 
                         for (String key : keys) {
 
-                            LookupElement lookupElement = LookupElementBuilder.create("\"" + key + "\"").withTypeText("String").withInsertHandler(new InsertHandler<LookupElement>() {
+                            LookupElement lookupElement = LookupElementBuilder.create(key, "\"" + key + "\"").withTypeText("String").withInsertHandler(new InsertHandler<LookupElement>() {
                                 @Override
                                 public void handleInsert(@NotNull InsertionContext context, @NotNull LookupElement item) {
                                     String activeElement = (String)item.getObject();

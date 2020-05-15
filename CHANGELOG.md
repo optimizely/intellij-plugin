@@ -1,5 +1,9 @@
 # Optimizely IntelliJ Plugin
 
+## 0.2.5
+May 15, 2020
+Fix kotlin autocomplete for experiment and variation.
+
 ## 0.2.4
 May 14, 2020
 Fix kotlin autocomplete.

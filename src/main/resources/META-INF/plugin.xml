@@ -94,6 +94,7 @@ open sourced https://github.com/optimizely/intellij-plugin.
   <change-notes>
     <![CDATA[
       <ul>
+        <li><b>0.2.5</b> Fix Kotlin auto-complete experiment and variation.</li>
         <li><b>0.2.4</b> Fix Kotlin auto-complete order.</li>
         <li><b>0.2.3</b> Fix size issue with attribute table.</li>
         <li><b>0.2.2</b> Set debug dialog attribute table size a little bigger.</li>
