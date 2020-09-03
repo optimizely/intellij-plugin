@@ -72,7 +72,8 @@ public class OptDialogWrapper extends DialogWrapper {
         //panel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));
 
         String[] methods = {"activate()", "getVariation()", "isFeatureEnabled()", "getFeatureVariableString()",
-                "getFeatureVariableInteger()", "getFeatureVariableDouble()", "getFeatureVariableBoolean()", "track()"};
+                "getFeatureVariableInteger()", "getFeatureVariableDouble()", "getFeatureVariableBoolean()",
+                "getFeatureVariableJSON()", "getAllFeatureVariables()", "track()"};
 
         ComboBox cb = new ComboBox(methods);
 
@@ -242,6 +243,9 @@ public class OptDialogWrapper extends DialogWrapper {
                 case "isFeatureEnabled()":
                     response = optimizely.isFeatureEnabled(key, id, attributes);
                     break;
+                case "getAllFeatureVariables()":
+                    response = optimizely.getAllFeatureVariables(key, id, attributes);
+                    break;
                 case "getFeatureVariableString()":
                     response = optimizely.getFeatureVariableString(key, variation, id, attributes);
                     break;
@@ -253,6 +257,9 @@ public class OptDialogWrapper extends DialogWrapper {
                     break;
                 case "getFeatureVariableBoolean()":
                     response = optimizely.getFeatureVariableBoolean(key, variation, id, attributes);
+                    break;
+                case "getFeatureVariableJSON()":
+                    response = optimizely.getFeatureVariableJSON(key, variation, id, attributes);
                     break;
                 case "track()":
                     optimizely.track(key, id, attributes);

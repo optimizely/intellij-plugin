@@ -26,6 +26,7 @@ public class OptimizelyUtil {
                 || text.matches(regexPrefix + "getFeatureVariableString" + regex)
                 || text.matches(regexPrefix + "getFeatureVariableDouble" + regex)
                 || text.matches(regexPrefix + "getFeatureVariableInteger" + regex)
+                || text.matches(regexPrefix + "getFeatureVariableJSON" + regex)
                 || text.matches(regexPrefix + "getFeatureVariableBoolean" + regex);
     }
 
@@ -35,7 +36,9 @@ public class OptimizelyUtil {
                 || text.endsWith("getFeatureVariableString()")
                 || text.endsWith("getFeatureVariableDouble()")
                 || text.endsWith("getFeatureVariableInteger()")
-                || text.endsWith("getFeatureVariableBoolean()");
+                || text.endsWith("getFeatureVariableJSON()")
+                || text.endsWith("getFeatureVariableBoolean()")
+                || text.endsWith("getAllFeatureVariables()");
     }
 
     public static Boolean isGetFeatureSecondParameterCamelCase(String text) {
@@ -43,6 +46,7 @@ public class OptimizelyUtil {
                 || text.matches(regexPrefix + "get_feature_variable_string" + regex)
                 || text.matches(regexPrefix + "get_feature_variable_double" + regex)
                 || text.matches(regexPrefix + "get_feature_variable_integer" + regex)
+                || text.matches(regexPrefix + "get_feature_variable_json" + regex)
                 || text.matches(regexPrefix + "get_feature_variable_boolean" + regex);
     }
 
@@ -53,6 +57,7 @@ public class OptimizelyUtil {
                 || text.endsWith("get_feature_variable_string()")
                 || text.endsWith("get_feature_variable_double()")
                 || text.endsWith("get_feature_variable_integer()")
+                || text.endsWith("get_feature_variable_json()")
                 || text.endsWith("get_feature_variable_boolean()");
     }
 
@@ -61,6 +66,7 @@ public class OptimizelyUtil {
                 || text.matches(regexPrefix + "GetFeatureVariableString" + regex)
                 || text.matches(regexPrefix + "GetFeatureVariableDouble" + regex)
                 || text.matches(regexPrefix + "GetFeatureVariableInteger" + regex)
+                || text.matches(regexPrefix + "GetFeatureVariableJSON" + regex)
                 || text.matches(regexPrefix + "GetFeatureVariableBoolean" + regex);
     }
 
@@ -72,6 +78,7 @@ public class OptimizelyUtil {
                 || text.endsWith("GetFeatureVariableString()")
                 || text.endsWith("GetFeatureVariableDouble()")
                 || text.endsWith("GetFeatureVariableInteger()")
+                || text.endsWith("GetFeatureVariableJSON()")
                 || text.endsWith("GetFeatureVariableBoolean()");
     }
 

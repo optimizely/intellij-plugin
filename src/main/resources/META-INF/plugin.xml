@@ -22,7 +22,7 @@
   <name>Optimizely</name>
   
   <!-- The version of this plugin -->
-  <version>0.2.4</version>
+  <version>0.2.6</version>
 
   <!-- Compatible with the following versions of IntelliJ Platform:
         version 2018.3 (build #183) and newer. -->
@@ -94,6 +94,9 @@ open sourced https://github.com/optimizely/intellij-plugin.
   <change-notes>
     <![CDATA[
       <ul>
+        <li><b>0.2.6</b> Fix Kotlin auto-complete order after 2020 updates.
+        Update to SDK 3.5 with feature JSON and getAllFeatures support.
+        Update the debug dialog to support feature json and getAllFeatures.</li>
         <li><b>0.2.5</b> Fix Kotlin auto-complete experiment and variation.</li>
         <li><b>0.2.4</b> Fix Kotlin auto-complete order.</li>
         <li><b>0.2.3</b> Fix size issue with attribute table.</li>

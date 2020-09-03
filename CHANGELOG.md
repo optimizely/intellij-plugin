@@ -1,5 +1,11 @@
 # Optimizely IntelliJ Plugin
 
+## 0.2.6
+Sept 3, 2020
+- Fix kotlin autocomplete order for 2020 builds.
+- Update to Optimizely SDK 3.5 and add featureJSON support.
+- Add support for featureJSON and getAllFeatureVariables in debug dialog.
+
 ## 0.2.5
 May 15, 2020
 Fix kotlin autocomplete for experiment and variation.
